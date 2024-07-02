@@ -18,12 +18,14 @@ const Navbar = () => {
           },
         }}
       >
-        <img src={"../../logo-white.png"} alt="logo" height={50} />
+        <Link href="/">
+          <img src={"../../logo-white.png"} alt="logo" height={50} />
+        </Link>
       </Box>
       {/* <img src={"../../slogan.png"} alt="logo" height={50} /> */}
 
       <Stack direction={"row"} gap="1rem">
-        <Link sx={{ textDecoration: "none" }}>
+        <Link sx={{ textDecoration: "none" }} href="/merge">
           <Box
             sx={{
               transition: "transform 0.3s", // Animation transition
