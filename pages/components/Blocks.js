@@ -3,7 +3,7 @@ import { Typography, Grid, Box, Button } from "@mui/material";
 import { getMergeSortAnimations } from "../SortingAlgorithms/algorithms.js";
 
 // Change this value for the speed of the animations.
-const ANIMATION_SPEED_MS = 1000;
+const ANIMATION_SPEED_MS = 1;
 
 // Change this value for the number of bars (value) in the array.
 const NUMBER_OF_ARRAY_BARS = 110;
@@ -84,10 +84,16 @@ class Blocks extends Component {
             />
           ))}
         </Box>
-        <Button onClick={() => this.mergeSort()} sx={{ color: "white" }}>
+        <Button
+          variant="contained"
+          onClick={() => this.mergeSort()}
+          sx={{ color: "white" }}
+        >
           Sort!
         </Button>
-        <Button onClick={() => this.resetArray()}>Generate new array</Button>
+        <Button variant="contained" onClick={() => this.resetArray()}>
+          Generate new array
+        </Button>
       </Grid>
     );
   }
