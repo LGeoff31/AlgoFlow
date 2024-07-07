@@ -19,6 +19,15 @@ const Footer = () => {
       >
         Made by Geoffrey Lee
       </Typography>
+      <Typography
+        marginTop="4rem"
+        color="white"
+        justifyContent={"center"}
+        // alignItems={"center"}
+      >
+        All code implementatons were created by me, feel free to look github and
+        give it a star!
+      </Typography>
       <Link
         href="https://github.com/LGeoff31/insomnia2"
         target="_blank"
