@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Typography, Box, Button, Stack } from "@mui/material";
-import { FaRandom, FaPlay } from "react-icons/fa";
+import { FaRandom, FaPlay, FaPause } from "react-icons/fa";
 import { CiMusicNote1 } from "react-icons/ci";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import VolumeOffIcon from "@mui/icons-material/VolumeOff";
@@ -13,6 +13,8 @@ const SWAP_COLOR = "red";
 const Bubble = () => {
   let audioCtx = null;
   const [sound, setSound] = useState(true);
+  const [paused, setPaused] = useState(true);
+  const [timeoutId, setTimeoutId] = useState(null);
 
   // Plays a note given a frequency
   const playNote = (freq) => {
@@ -96,16 +98,26 @@ const Bubble = () => {
     return swaps;
   };
 
-  // Handle Play function
-  const handlePlay = () => {
-    const swaps = bubbleSort();
-    animate(swaps, array, setArray);
+  const handlePlayPause = () => {
+    setPaused(!paused);
   };
+
+  useEffect(() => {
+    if (!paused) {
+      const swaps = bubbleSort();
+      animate(swaps, array, setArray);
+    } else {
+      clearTimeout(timeoutId);
+    }
+  }, [paused]);
 
   const [indices, setIndices] = useState([-1, -1]);
   const animate = (swaps, array, setArray) => {
-    console.log("swapping");
     if (swaps.length == 0) {
+      setPaused(true);
+      return;
+    }
+    if (paused) {
       return;
     }
     const [i, j] = swaps.shift();
@@ -118,7 +130,8 @@ const Bubble = () => {
       playNote(200 + array[j] * 500);
     }
 
-    setTimeout(() => animate(swaps, newArray, setArray), 10);
+    const id = setTimeout(() => animate(swaps, newArray, setArray), SPEED);
+    setTimeoutId(id);
   };
 
   return (
@@ -154,10 +167,10 @@ const Bubble = () => {
       >
         <Button
           variant="contained"
-          onClick={handlePlay}
+          onClick={handlePlayPause}
           sx={{ color: "white", background: "transparent", fontSize: "3rem" }}
         >
-          <FaPlay />
+          {paused ? <FaPlay /> : <FaPause />}
         </Button>
         <Button
           variant="contained"
