@@ -1,6 +1,6 @@
 import { Typography, Grid, Button, Stack, Tooltip } from "@mui/material";
 import React, { useState } from "react";
-import MergeSort from "../code/MergeSort";
+import MergeSort from "../../code/MergeSort";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { HiOutlineClipboardDocument } from "react-icons/hi2";
@@ -34,8 +34,78 @@ const Description = () => {
 
   return (
     <Grid container sx={{ color: "white", marginTop: "4rem" }}>
-      <Grid item xs={12} md={6}>
-        <Typography>This is a description</Typography>
+      <Grid item xs={12} md={6} container direction={"column"}>
+        <Typography
+          variant="h2"
+          display="flex"
+          margin="0 auto"
+          justifyContent={"center"}
+        >
+          <span style={{ color: "#6B7280" }}>Merge</span>
+          <span style={{ color: "#e68501", fontWeight: "bold" }}>Sort</span>
+        </Typography>
+        <Stack>
+          <Typography
+            fontSize="2rem"
+            marginTop="4rem"
+            marginBottom="1rem"
+            sx={{ textDecoration: "underline" }}
+          >
+            {" "}
+            Divide and Conquer Approach
+          </Typography>
+          <Typography
+            component={"ul"}
+            // justifyContent={"center"}
+            // margin="0 auto"
+            // marginTop="3rem"
+            fontSize="1.5rem"
+            marginLeft="1rem"
+          >
+            <li>
+              Recursively split the array into left and right halves until the
+              array has one element.
+            </li>
+            <li>
+              Begin merging these single element arrays into two element arrays,
+              then four element arrays, etc
+            </li>
+            <li>
+              During the merge process, ensure the two arrays merge to a sorted
+              array using pointers
+            </li>
+            <li>
+              All the single element arrays will have merged to form a sorted
+              array of the original array size ✅
+            </li>
+          </Typography>
+          <Typography
+            fontSize="2rem"
+            marginTop="4rem"
+            marginBottom="1rem"
+            sx={{ textDecoration: "underline" }}
+          >
+            {" "}
+            Complexity Analysis
+          </Typography>
+          <Typography
+            component={"ul"}
+            // justifyContent={"center"}
+            // margin="0 auto"
+            // marginTop="3rem"
+            fontSize="1.5rem"
+            marginLeft="1rem"
+          >
+            <li>
+              Time Complexity: O(nlogn) Worst / Average case | Breaking tree
+              into halves is O(logn) and merging sublists is O(n)
+            </li>
+            <li>
+              Space Complexity: O(n) &nbsp; &nbsp; | The recursive call stack
+              will contain O(n) elements
+            </li>
+          </Typography>
+        </Stack>
       </Grid>
       <Grid xs={12} md={6}>
         <Button

@@ -1,6 +1,9 @@
 import React, { Component } from "react";
-import { Typography, Grid, Box, Button } from "@mui/material";
-import { getMergeSortAnimations } from "../SortingAlgorithms/algorithms.js";
+import { Stack, Typography, Grid, Box, Button } from "@mui/material";
+import { getMergeSortAnimations } from "../../SortingAlgorithms/algorithms.js";
+import { CiPlay1 } from "react-icons/ci";
+import { FaRandom } from "react-icons/fa";
+import { FaPlay } from "react-icons/fa";
 
 // Change this value for the speed of the animations.
 const ANIMATION_SPEED_MS = 1;
@@ -68,10 +71,13 @@ class Blocks extends Component {
         textAlign={"center"}
         marginTop="4rem"
       >
-        <Typography color="white" variant="h2" marginBottom="4rem">
-          Merge Sort
-        </Typography>
-        <Box display="flex" justifyContent="center" alignItems="flex-end">
+        <img src={"../../slogan.png"} alt="slogan" height={80} />
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="flex-end"
+          marginTop="3rem"
+        >
           {array.map((value, idx) => (
             <Box
               className="array-bar"
@@ -84,16 +90,27 @@ class Blocks extends Component {
             />
           ))}
         </Box>
-        <Button
-          variant="contained"
-          onClick={() => this.mergeSort()}
-          sx={{ color: "white" }}
+        <Stack
+          marginTop="4rem"
+          direction="row"
+          justifyContent={"center"}
+          gap="2rem"
         >
-          Sort!
-        </Button>
-        <Button variant="contained" onClick={() => this.resetArray()}>
-          Generate new array
-        </Button>
+          <Button
+            variant="contained"
+            onClick={() => this.mergeSort()}
+            sx={{ color: "white", background: "transparent", fontSize: "3rem" }}
+          >
+            <FaPlay />
+          </Button>
+          <Button
+            variant="contained"
+            onClick={() => this.resetArray()}
+            sx={{ color: "white", background: "transparent", fontSize: "3rem" }}
+          >
+            <FaRandom />
+          </Button>
+        </Stack>
       </Grid>
     );
   }

@@ -6,30 +6,31 @@ const Footer = () => {
   return (
     <Stack
       display="flex"
-      direction="row"
       alignItems={"center"}
       justifyContent="center"
       gap="1rem"
+      marginTop="4rem"
     >
       <Typography
         marginTop="4rem"
         color="white"
         justifyContent={"center"}
+        fontSize="2rem"
         // alignItems={"center"}
       >
-        Made by Geoffrey Lee
+        Made by Geoffrey Lee ❤️
       </Typography>
       <Typography
-        marginTop="4rem"
         color="white"
         justifyContent={"center"}
+        fontSize="1.5rem"
         // alignItems={"center"}
       >
-        All code implementatons were created by me, feel free to look github and
-        give it a star!
+        All code implementations were created by me, feel free to look at the
+        github and give it a star! ⭐
       </Typography>
       <Link
-        href="https://github.com/LGeoff31/insomnia2"
+        href="https://github.com/LGeoff31/algoflow"
         target="_blank"
         sx={{
           color: "white",
