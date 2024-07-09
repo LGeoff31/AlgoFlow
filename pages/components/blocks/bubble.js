@@ -1,21 +1,31 @@
-import React, { useEffect, useState } from "react";
-import { Typography, Box, Button, Stack } from "@mui/material";
+import React, { useEffect, useState, useRef } from "react";
+import { Typography, Box, Button, Stack, Slider } from "@mui/material";
 import { FaRandom, FaPlay, FaPause } from "react-icons/fa";
 import { CiMusicNote1 } from "react-icons/ci";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import VolumeOffIcon from "@mui/icons-material/VolumeOff";
 
 const SPEED = 1;
-const BARS = 30;
+const BARS = 40;
 const COLOR = "turquoise";
 const SWAP_COLOR = "red";
 
 const Bubble = () => {
   let audioCtx = null;
   const [sound, setSound] = useState(true);
+  const soundRef = useRef(sound);
   const [paused, setPaused] = useState(true);
   const [timeoutId, setTimeoutId] = useState(null);
+  const [bars, setBars] = useState(20);
+  const [speed, setSpeed] = useState(1);
+  const speedRef = useRef(speed);
 
+  useEffect(() => {
+    soundRef.current = sound;
+  }, [sound]);
+  useEffect(() => {
+    speedRef.current = speed;
+  }, [speed]);
   // Plays a note given a frequency
   const playNote = (freq) => {
     if (audioCtx == null) {
@@ -40,13 +50,13 @@ const Bubble = () => {
   useEffect(() => {
     const newArray = generateArray();
     setArray(newArray);
-  }, []);
+  }, [bars]);
 
   // Generate new array
   const generateArray = () => {
     const array = [];
     setIndices([-1, -1]);
-    for (let i = 0; i < BARS; i++) {
+    for (let i = 0; i < bars; i++) {
       array[i] = Math.random();
     }
     return array;
@@ -94,7 +104,6 @@ const Bubble = () => {
         }
       }
     }
-    // setArray(sortedArray);
     return swaps;
   };
 
@@ -125,15 +134,26 @@ const Bubble = () => {
     [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
     setArray(newArray);
     setIndices([i, j]);
-    if (sound) {
+    console.log("sound", sound);
+    if (soundRef.current) {
       playNote(200 + array[i] * 500);
       playNote(200 + array[j] * 500);
     }
 
-    const id = setTimeout(() => animate(swaps, newArray, setArray), SPEED);
+    const id = setTimeout(
+      () => animate(swaps, newArray, setArray),
+      speedRef.current
+    );
     setTimeoutId(id);
   };
 
+  const handleRefresh = () => {
+    setPaused(true);
+    clearTimeout(timeoutId);
+    const newArray = generateArray();
+    setArray(newArray);
+    setIndices([-1, -1]);
+  };
   return (
     <>
       <Box
@@ -164,18 +184,64 @@ const Bubble = () => {
         direction="row"
         justifyContent={"center"}
         gap="2rem"
+        alignItems={"center"}
       >
+        <Box sx={{ width: 300 }}>
+          <Stack direction="row" alignItems={"center"} gap="1.5rem">
+            <Typography fontSize="2rem" color="white" margin="0 auto">
+              SPEED
+            </Typography>
+            <Slider
+              size="large"
+              defaultValue={1}
+              valueLabelDisplay="auto"
+              min={1}
+              max={500}
+              onChange={(e, val) => setSpeed(val)}
+              sx={{ color: "turquoise" }}
+            />
+          </Stack>
+          <Stack direction="row" alignItems={"center"} gap="1.5rem">
+            <Typography fontSize="2rem" color="white" margin="0 auto">
+              BARS
+            </Typography>
+            <Slider
+              size="large"
+              defaultValue={20}
+              valueLabelDisplay="auto"
+              min={10}
+              max={100}
+              onChange={(e, val) => setBars(val)}
+              sx={{ color: "turquoise" }}
+              disabled={!paused}
+            />
+          </Stack>
+        </Box>
         <Button
           variant="contained"
           onClick={handlePlayPause}
-          sx={{ color: "white", background: "transparent", fontSize: "3rem" }}
+          sx={{
+            color: "white",
+            background: "transparent",
+            fontSize: "3rem",
+            "&:hover": {
+              background: "transparent",
+            },
+          }}
         >
           {paused ? <FaPlay /> : <FaPause />}
         </Button>
         <Button
           variant="contained"
-          onClick={() => setArray(generateArray)}
-          sx={{ color: "white", background: "transparent", fontSize: "3rem" }}
+          onClick={handleRefresh}
+          sx={{
+            color: "white",
+            background: "transparent",
+            fontSize: "3rem",
+            "&:hover": {
+              background: "transparent",
+            },
+          }}
         >
           <FaRandom />
         </Button>
@@ -185,7 +251,14 @@ const Bubble = () => {
           onClick={() => {
             setSound(!sound);
           }}
-          sx={{ color: "white", background: "transparent", fontSize: "3rem" }}
+          sx={{
+            color: "white",
+            background: "transparent",
+            fontSize: "3rem",
+            "&:hover": {
+              background: "transparent",
+            },
+          }}
         >
           {sound ? (
             <VolumeUpIcon sx={{ fontSize: "3rem" }} />
