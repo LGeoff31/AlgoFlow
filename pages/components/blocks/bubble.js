@@ -19,6 +19,7 @@ const Bubble = () => {
   const [bars, setBars] = useState(20);
   const [speed, setSpeed] = useState(1);
   const speedRef = useRef(speed);
+  const [isSorted, setIsSorted] = useState(false);
 
   useEffect(() => {
     soundRef.current = sound;
@@ -54,6 +55,7 @@ const Bubble = () => {
 
   // Generate new array
   const generateArray = () => {
+    setIsSorted(false);
     const array = [];
     setIndices([-1, -1]);
     for (let i = 0; i < bars; i++) {
@@ -80,8 +82,13 @@ const Bubble = () => {
             sx={{
               width: "20px",
               height: `${value * 100}%`,
-              backgroundColor: indices.includes(idx) ? SWAP_COLOR : COLOR,
+              backgroundColor: isSorted
+                ? "green"
+                : indices.includes(idx)
+                ? SWAP_COLOR
+                : COLOR,
               margin: "0 1px",
+              transition: isSorted ? "background-color 0.5s ease" : "none",
             }}
           />
         ))}
@@ -123,6 +130,7 @@ const Bubble = () => {
   const [indices, setIndices] = useState([-1, -1]);
   const animate = (swaps, array, setArray) => {
     if (swaps.length == 0) {
+      setIsSorted(true);
       setPaused(true);
       return;
     }
