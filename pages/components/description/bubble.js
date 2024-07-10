@@ -52,7 +52,7 @@ const Description = () => {
             sx={{ textDecoration: "underline" }}
           >
             {" "}
-            Divide and Conquer Approach
+            Simple sorting algorithm
           </Typography>
           <Typography
             component={"ul"}
@@ -63,20 +63,20 @@ const Description = () => {
             marginLeft="1rem"
           >
             <li>
-              Recursively split the array into left and right halves until the
-              array has one element.
+              Repeatedly swapping the adjacent elements if they are in the wrong
+              order
             </li>
             <li>
-              Begin merging these single element arrays into two element arrays,
-              then four element arrays, etc
+              Traverse from left and compare adjacent elements and the higher
+              one is placed at right side
             </li>
             <li>
-              During the merge process, ensure the two arrays merge to a sorted
-              array using pointers
+              In this way, the largest element is moved to the rightmost end at
+              first
             </li>
             <li>
-              All the single element arrays will have merged to form a sorted
-              array of the original array size ✅
+              This process is then continued to find the second largest and
+              place it and so on until the data is sorted ✅
             </li>
           </Typography>
           <Typography
@@ -88,21 +88,14 @@ const Description = () => {
             {" "}
             Complexity Analysis
           </Typography>
-          <Typography
-            component={"ul"}
-            // justifyContent={"center"}
-            // margin="0 auto"
-            // marginTop="3rem"
-            fontSize="1.5rem"
-            marginLeft="1rem"
-          >
+          <Typography component={"ul"} fontSize="1.5rem" marginLeft="1rem">
             <li>
-              Time Complexity: O(nlogn) Worst / Average case | Breaking tree
-              into halves is O(logn) and merging sublists is O(n)
+              Time Complexity: O(n^2) Worst / Average case | Loop through all
+              numbers and for each number, have to potentially swap close to n
+              times, think of the example [n, n-1, n-2, .. 2, 1]
             </li>
             <li>
-              Space Complexity: O(n) &nbsp; &nbsp; | The recursive call stack
-              will contain O(n) elements
+              Space Complexity: O(1) &nbsp; &nbsp; | Only pointer are used
             </li>
           </Typography>
         </Stack>
@@ -194,7 +187,11 @@ const Description = () => {
               />
             </Button>
           </Tooltip>
-          <SyntaxHighlighter language={selectedLanguage} style={dark}>
+          <SyntaxHighlighter
+            language={selectedLanguage}
+            style={dark}
+            customStyle={{ height: "50rem", overflowY: "scroll" }}
+          >
             {BubbleSort[selectedLanguage]}
           </SyntaxHighlighter>
         </div>
