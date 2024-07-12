@@ -5,7 +5,7 @@ const Navbar = () => {
   const algorithms = [
     { name: "Merge", route: "/merge" },
     { name: "Quick", route: "/quick" },
-    { name: "Heap", route: "/heap" },
+    { name: "Selection", route: "/selection" },
     { name: "Bubble", route: "/bubble" },
   ];
   return (

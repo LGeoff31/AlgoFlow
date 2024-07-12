@@ -1,6 +1,6 @@
 import { Typography, Grid, Button, Stack, Tooltip } from "@mui/material";
 import React, { useState } from "react";
-import BubbleSort from "../../code/HeapSort";
+import BubbleSort from "../../code/SelectionSort";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { HiOutlineClipboardDocument } from "react-icons/hi2";
@@ -41,7 +41,7 @@ const Description = () => {
           margin="0 auto"
           justifyContent={"center"}
         >
-          <span style={{ color: "#6B7280" }}>Heap</span>
+          <span style={{ color: "#6B7280" }}>Selection</span>
           <span style={{ color: "#e68501", fontWeight: "bold" }}>Sort</span>
         </Typography>
         <Stack>
@@ -63,20 +63,13 @@ const Description = () => {
             marginLeft="1rem"
           >
             <li>
-              Repeatedly swapping the adjacent elements if they are in the wrong
-              order
+              The algorithm repeatedly selects the smallest (or largest) element
+              from the unsorted portion of the list and swaps it with the first
+              element of the unsorted part
             </li>
             <li>
-              Traverse from left and compare adjacent elements and the higher
-              one is placed at right side
-            </li>
-            <li>
-              In this way, the largest element is moved to the rightmost end at
-              first
-            </li>
-            <li>
-              This process is then continued to find the second largest and
-              place it and so on until the data is sorted ✅
+              This process is repeated for the remaining unsorted portion until
+              the entire list is sorted.
             </li>
           </Typography>
           <Typography
@@ -190,7 +183,7 @@ const Description = () => {
           <SyntaxHighlighter
             language={selectedLanguage}
             style={dark}
-            customStyle={{ height: "50rem", overflowY: "scroll" }}
+            customStyle={{ height: "28rem", overflowY: "scroll" }}
           >
             {BubbleSort[selectedLanguage]}
           </SyntaxHighlighter>

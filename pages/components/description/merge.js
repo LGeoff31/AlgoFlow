@@ -194,7 +194,11 @@ const Description = () => {
               />
             </Button>
           </Tooltip>
-          <SyntaxHighlighter language={selectedLanguage} style={dark}>
+          <SyntaxHighlighter
+            language={selectedLanguage}
+            style={dark}
+            customStyle={{ height: "40rem", overflowY: "scroll" }}
+          >
             {MergeSort[selectedLanguage]}
           </SyntaxHighlighter>
         </div>

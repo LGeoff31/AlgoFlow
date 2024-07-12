@@ -32,7 +32,10 @@ export const generateArray = (bars, setIsSorted) => {
   return array;
 };
 
-export const handlePlayPause = (setPaused, paused) => {
+export const handlePlayPause = (setPaused, paused, isSorted) => {
+  if (isSorted) {
+    return;
+  }
   setPaused(!paused);
 };
 

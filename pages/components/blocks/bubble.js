@@ -157,7 +157,7 @@ const Bubble = () => {
         </Box>
         <Button
           variant="contained"
-          onClick={() => handlePlayPause(setPaused, paused)}
+          onClick={() => handlePlayPause(setPaused, paused, isSorted)}
           sx={{
             color: "white",
             background: "transparent",
