@@ -1,20 +1,17 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Typography, Box, Button, Stack, Slider } from "@mui/material";
 import { FaRandom, FaPlay, FaPause } from "react-icons/fa";
-import { IoMdSpeedometer } from "react-icons/io";
 import { CiMusicNote1 } from "react-icons/ci";
-import { GiNetworkBars } from "react-icons/gi";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import VolumeOffIcon from "@mui/icons-material/VolumeOff";
-import {
-  generateArray,
-  playNote,
-  handlePlayPause,
-  DisplayBars,
-  handleRefresh,
-} from "../utils";
 
-const Bubble = () => {
+const SPEED = 1;
+const BARS = 40;
+const COLOR = "turquoise";
+const SWAP_COLOR = "red";
+
+const Heap = () => {
+  let audioCtx = null;
   const [sound, setSound] = useState(true);
   const soundRef = useRef(sound);
   const [paused, setPaused] = useState(true);
@@ -23,32 +20,83 @@ const Bubble = () => {
   const [speed, setSpeed] = useState(1);
   const speedRef = useRef(speed);
   const [isSorted, setIsSorted] = useState(false);
-  const [array, setArray] = useState([]);
-  const [indices, setIndices] = useState([-1, -1]);
 
-  // Allow sound toggling during animation
   useEffect(() => {
     soundRef.current = sound;
   }, [sound]);
-  // Allow speed toggling during animation
   useEffect(() => {
     speedRef.current = speed;
   }, [speed]);
-  // Display how many bars user wants to see in real-time
+  // Plays a note given a frequency
+  const playNote = (freq) => {
+    if (audioCtx == null) {
+      audioCtx = new (AudioContext ||
+        webkitAudioContext ||
+        window.webkitAudioContext)();
+    }
+    const dur = 0.1;
+    const osc = audioCtx.createOscillator();
+    osc.frequency.value = freq;
+    osc.start();
+    osc.stop(audioCtx.currentTime + dur);
+    const node = audioCtx.createGain();
+    node.gain.value = 0.1;
+    node.gain.linearRampToValueAtTime(0, audioCtx.currentTime + dur);
+    osc.connect(node);
+    node.connect(audioCtx.destination);
+  };
+  const [array, setArray] = useState([]);
+
+  // Initialization on page refresh
   useEffect(() => {
-    const newArray = generateArray(bars, setIsSorted);
+    const newArray = generateArray();
     setArray(newArray);
   }, [bars]);
-  // Simple play/pause toggling
-  useEffect(() => {
-    if (!paused) {
-      const swaps = bubbleSort();
-      animate(swaps, array, setArray);
-    } else {
-      clearTimeout(timeoutId);
-    }
-  }, [paused]);
 
+  // Generate new array
+  const generateArray = () => {
+    setIsSorted(false);
+    const array = [];
+    setIndices([-1, -1]);
+    for (let i = 0; i < bars; i++) {
+      array[i] = Math.random();
+    }
+    return array;
+  };
+
+  // Display the bars
+  const displayBars = (indices) => {
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "flex-end",
+          justifyContent: "center",
+          height: "800px",
+          marginTop: "4rem",
+        }}
+      >
+        {array.map((value, idx) => (
+          <Box
+            key={idx}
+            sx={{
+              width: "20px",
+              height: `${value * 100}%`,
+              backgroundColor: isSorted
+                ? "green"
+                : indices.includes(idx)
+                ? SWAP_COLOR
+                : COLOR,
+              margin: "0 1px",
+              transition: isSorted ? "background-color 0.5s ease" : "none",
+            }}
+          />
+        ))}
+      </Box>
+    );
+  };
+
+  // Bubble sort and update to sorted array
   const bubbleSort = () => {
     const swaps = [];
     const sortedArray = [...array];
@@ -66,6 +114,20 @@ const Bubble = () => {
     return swaps;
   };
 
+  const handlePlayPause = () => {
+    setPaused(!paused);
+  };
+
+  useEffect(() => {
+    if (!paused) {
+      const swaps = bubbleSort();
+      animate(swaps, array, setArray);
+    } else {
+      clearTimeout(timeoutId);
+    }
+  }, [paused]);
+
+  const [indices, setIndices] = useState([-1, -1]);
   const animate = (swaps, array, setArray) => {
     if (swaps.length == 0) {
       setIsSorted(true);
@@ -80,6 +142,7 @@ const Bubble = () => {
     [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
     setArray(newArray);
     setIndices([i, j]);
+    console.log("sound", sound);
     if (soundRef.current) {
       playNote(200 + array[i] * 500);
       playNote(200 + array[j] * 500);
@@ -92,6 +155,13 @@ const Bubble = () => {
     setTimeoutId(id);
   };
 
+  const handleRefresh = () => {
+    setPaused(true);
+    clearTimeout(timeoutId);
+    const newArray = generateArray();
+    setArray(newArray);
+    setIndices([-1, -1]);
+  };
   return (
     <>
       <Box
@@ -116,7 +186,7 @@ const Bubble = () => {
           <CiMusicNote1 />
         </Typography>
       </Box>
-      <DisplayBars array={array} indices={indices} isSorted={isSorted} />
+      {displayBars(indices)}
       <Stack
         marginTop="4rem"
         direction="row"
@@ -127,7 +197,7 @@ const Bubble = () => {
         <Box sx={{ width: 300 }}>
           <Stack direction="row" alignItems={"center"} gap="1.5rem">
             <Typography fontSize="2rem" color="white" margin="0 auto">
-              <IoMdSpeedometer />
+              SPEED
             </Typography>
             <Slider
               size="large"
@@ -141,7 +211,7 @@ const Bubble = () => {
           </Stack>
           <Stack direction="row" alignItems={"center"} gap="1.5rem">
             <Typography fontSize="2rem" color="white" margin="0 auto">
-              <GiNetworkBars />
+              BARS
             </Typography>
             <Slider
               size="large"
@@ -157,7 +227,7 @@ const Bubble = () => {
         </Box>
         <Button
           variant="contained"
-          onClick={() => handlePlayPause(setPaused, paused)}
+          onClick={handlePlayPause}
           sx={{
             color: "white",
             background: "transparent",
@@ -171,16 +241,7 @@ const Bubble = () => {
         </Button>
         <Button
           variant="contained"
-          onClick={() =>
-            handleRefresh(
-              setPaused,
-              timeoutId,
-              bars,
-              setIsSorted,
-              setArray,
-              setIndices
-            )
-          }
+          onClick={handleRefresh}
           sx={{
             color: "white",
             background: "transparent",
@@ -218,4 +279,4 @@ const Bubble = () => {
   );
 };
 
-export default Bubble;
+export default Heap;
