@@ -1,6 +1,6 @@
 import { Typography, Grid, Button, Stack, Tooltip } from "@mui/material";
 import React, { useState } from "react";
-import SelectionSort from "../../code/SelectionSort";
+import QuickSort from "../../code/QuickSort";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { HiOutlineClipboardDocument } from "react-icons/hi2";
@@ -41,7 +41,7 @@ const Description = () => {
           margin="0 auto"
           justifyContent={"center"}
         >
-          <span style={{ color: "#6B7280" }}>Selection</span>
+          <span style={{ color: "#6B7280" }}>Quick</span>
           <span style={{ color: "#e68501", fontWeight: "bold" }}>Sort</span>
         </Typography>
         <Stack>
@@ -52,7 +52,7 @@ const Description = () => {
             sx={{ textDecoration: "underline" }}
           >
             {" "}
-            Simple sorting algorithm
+            Quick sorting algorithm
           </Typography>
           <Typography
             component={"ul"}
@@ -63,13 +63,15 @@ const Description = () => {
             marginLeft="1rem"
           >
             <li>
-              The algorithm repeatedly selects the smallest (or largest) element
-              from the unsorted portion of the list and swaps it with the first
-              element of the unsorted part
+              QuickSort is a sorting algorithm based on the Divide and Conquer
+              algorithm that picks an element as a pivot and partitions the
+              given array around the picked pivot by placing the pivot in its
+              correct position in the sorted array.
             </li>
             <li>
-              This process is repeated for the remaining unsorted portion until
-              the entire list is sorted.
+              Partition is done recursively on each side of the pivot after the
+              pivot is placed in its correct position and this finally sorts the
+              array.
             </li>
           </Typography>
           <Typography
@@ -83,12 +85,14 @@ const Description = () => {
           </Typography>
           <Typography component={"ul"} fontSize="1.5rem" marginLeft="1rem">
             <li>
-              Time Complexity: O(n^2) Worst / Average case | Loop through all
-              numbers and for each number, have to potentially swap close to n
-              times, think of the example [n, n-1, n-2, .. 2, 1]
+              Time Complexity: O(n^2) Worst / O(nlogn) Average + Best case |
+              Pivot rougly divides array into halves, then linear loop to find
+              all smaller / bigger elements than pivot, worst case pivot is
+              smallest / biggest number
             </li>
             <li>
-              Space Complexity: O(1) &nbsp; &nbsp; | Only pointer are used
+              Space Complexity: O(n) worst case O(logn) average / best case
+              &nbsp; &nbsp;
             </li>
           </Typography>
         </Stack>
@@ -183,9 +187,9 @@ const Description = () => {
           <SyntaxHighlighter
             language={selectedLanguage}
             style={dark}
-            customStyle={{ height: "28rem", overflowY: "scroll" }}
+            customStyle={{ height: "35rem", overflowY: "scroll" }}
           >
-            {SelectionSort[selectedLanguage]}
+            {QuickSort[selectedLanguage]}
           </SyntaxHighlighter>
         </div>
         <ToastContainer />

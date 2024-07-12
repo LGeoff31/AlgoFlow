@@ -1,4 +1,4 @@
-const heapSortCode = {
+const selectionSortCode = {
   python: `def selectionSort(arr):
   for i in range(len(arr)):
       minElem = arr[i]
@@ -73,4 +73,4 @@ const heapSortCode = {
     }
 }`,
 };
-export default heapSortCode;
+export default selectionSortCode;
