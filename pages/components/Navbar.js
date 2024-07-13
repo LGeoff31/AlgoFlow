@@ -32,6 +32,7 @@ const Navbar = () => {
       <Stack direction={"row"} gap="1rem">
         {algorithms.map((algorithm, idx) => (
           <Link
+            key={idx}
             sx={{
               textDecoration: "none",
             }}
