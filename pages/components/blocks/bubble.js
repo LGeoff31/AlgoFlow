@@ -12,7 +12,7 @@ import {
   handlePlayPause,
   DisplayBars,
   handleRefresh,
-} from "../utils";
+} from "@/utils/utils";
 
 const Bubble = () => {
   const [sound, setSound] = useState(true);
