@@ -1,6 +1,6 @@
 import { Typography, Grid, Button, Stack, Tooltip } from "@mui/material";
 import React, { useState } from "react";
-import MergeSort from "../../code/MergeSort";
+import { mergeSortCode } from "@/pages/code/MergeSort";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { HiOutlineClipboardDocument } from "react-icons/hi2";
@@ -199,7 +199,7 @@ const Description = () => {
             style={dark}
             customStyle={{ height: "40rem", overflowY: "scroll" }}
           >
-            {MergeSort[selectedLanguage]}
+            {mergeSortCode[selectedLanguage]}
           </SyntaxHighlighter>
         </div>
         <ToastContainer />

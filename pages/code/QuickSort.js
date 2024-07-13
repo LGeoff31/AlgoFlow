@@ -1,4 +1,4 @@
-const quickSortCode = {
+export const quickSortCode = {
   python: `def partition(arr, low, high):
   # Default pick last element to be pivot
   pivot = arr[high]
@@ -128,4 +128,3 @@ public static void quickSort(int[] arr, int low, int high) {
     }
 }`,
 };
-export default quickSortCode;

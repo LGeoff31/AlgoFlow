@@ -1,4 +1,4 @@
-const selectionSortCode = {
+export const selectionSortCode = {
   python: `def selectionSort(arr):
   for i in range(len(arr)):
       minElem = arr[i]
@@ -73,4 +73,3 @@ const selectionSortCode = {
     }
 }`,
 };
-export default selectionSortCode;

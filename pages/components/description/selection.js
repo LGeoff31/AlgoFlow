@@ -1,6 +1,6 @@
 import { Typography, Grid, Button, Stack, Tooltip } from "@mui/material";
 import React, { useState } from "react";
-import SelectionSort from "../../code/SelectionSort";
+import { selectionSortCode } from "@/pages/code/SelectionSort";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { HiOutlineClipboardDocument } from "react-icons/hi2";
@@ -185,7 +185,7 @@ const Description = () => {
             style={dark}
             customStyle={{ height: "28rem", overflowY: "scroll" }}
           >
-            {SelectionSort[selectedLanguage]}
+            {selectionSortCode[selectedLanguage]}
           </SyntaxHighlighter>
         </div>
         <ToastContainer />

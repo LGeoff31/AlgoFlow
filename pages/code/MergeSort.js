@@ -1,4 +1,4 @@
-const mergeSortCode = {
+export const mergeSortCode = {
   python: `def mergeSort(arr):
     if len(arr) > 1:
         mid = len(arr) // 2
@@ -166,4 +166,3 @@ void mergeSort(int arr[], int temp[], int left, int right) {
     return arr;
 }`,
 };
-export default mergeSortCode;

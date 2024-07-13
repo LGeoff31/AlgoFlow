@@ -1,4 +1,4 @@
-const mergeSortCode = {
+export const bubbleSortCode = {
   python: `def bubbleSort(arr):
     for i in range(len(arr)):
         # Assumes largest ith numbers are already placed at the end of the array, hence no need to iterate over them
@@ -62,4 +62,3 @@ const mergeSortCode = {
 }
 `,
 };
-export default mergeSortCode;
