@@ -1,124 +1,242 @@
-import React, { Component } from "react";
-import { Stack, Typography, Grid, Box, Button } from "@mui/material";
-import { getMergeSortAnimations } from "../../SortingAlgorithms/algorithms.js";
-import { CiPlay1 } from "react-icons/ci";
-import { FaRandom } from "react-icons/fa";
-import { FaPlay } from "react-icons/fa";
+import React, { useEffect, useState, useRef } from "react";
+import { Typography, Box, Button, Stack, Slider } from "@mui/material";
+import { FaRandom, FaPlay, FaPause } from "react-icons/fa";
+import { IoMdSpeedometer } from "react-icons/io";
+import { CiMusicNote1 } from "react-icons/ci";
+import { GiNetworkBars } from "react-icons/gi";
+import VolumeUpIcon from "@mui/icons-material/VolumeUp";
+import VolumeOffIcon from "@mui/icons-material/VolumeOff";
+import {
+  generateArray,
+  playNote,
+  handlePlayPause,
+  DisplayBars,
+  handleRefresh,
+} from "../utils";
 
-// Change this value for the speed of the animations.
-const ANIMATION_SPEED_MS = 1;
+const Merge = () => {
+  const [sound, setSound] = useState(true);
+  const soundRef = useRef(sound);
+  const [paused, setPaused] = useState(true);
+  const [timeoutId, setTimeoutId] = useState(null);
+  const [bars, setBars] = useState(20);
+  const [speed, setSpeed] = useState(1);
+  const speedRef = useRef(speed);
+  const [isSorted, setIsSorted] = useState(false);
+  const [array, setArray] = useState([]);
+  const [indices, setIndices] = useState([-1, -1]);
 
-// Change this value for the number of bars (value) in the array.
-const NUMBER_OF_ARRAY_BARS = 110;
-
-// This is the main color of the array bars.
-const PRIMARY_COLOR = "turquoise";
-
-// This is the color of array bars that are being compared throughout the animations.
-const SECONDARY_COLOR = "red";
-
-class Blocks extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      array: [],
-    };
-  }
-
-  componentDidMount() {
-    this.resetArray();
-  }
-
-  resetArray() {
-    const array = [];
-    for (let i = 0; i < NUMBER_OF_ARRAY_BARS; i++) {
-      array.push(randomIntFromInterval(5, 730));
+  // Allow sound toggling during animation
+  useEffect(() => {
+    soundRef.current = sound;
+  }, [sound]);
+  // Allow speed toggling during animation
+  useEffect(() => {
+    speedRef.current = speed;
+  }, [speed]);
+  // Display how many bars user wants to see in real-time
+  useEffect(() => {
+    const newArray = generateArray(bars, setIsSorted);
+    setArray(newArray);
+  }, [bars]);
+  // Simple play/pause toggling
+  useEffect(() => {
+    const sortedArray = [...array];
+    if (!paused) {
+      const swaps = [];
+      mergeSort(sortedArray, 0, sortedArray.length - 1, swaps);
+      animate(swaps, array, setArray);
+    } else {
+      clearTimeout(timeoutId);
     }
-    this.setState({ array });
-  }
+  }, [paused]);
 
-  mergeSort() {
-    const animations = getMergeSortAnimations(this.state.array);
-    for (let i = 0; i < animations.length; i++) {
-      const arrayBars = document.getElementsByClassName("array-bar");
-      const isColorChange = i % 3 !== 2;
-      if (isColorChange) {
-        const [barOneIdx, barTwoIdx] = animations[i];
-        const barOneStyle = arrayBars[barOneIdx].style;
-        const barTwoStyle = arrayBars[barTwoIdx].style;
-        const color = i % 3 === 0 ? SECONDARY_COLOR : PRIMARY_COLOR;
-        setTimeout(() => {
-          barOneStyle.backgroundColor = color;
-          barTwoStyle.backgroundColor = color;
-        }, i * ANIMATION_SPEED_MS);
+  const merge = (arr, low, mid, high, swaps) => {
+    const left = arr.slice(low, mid + 1);
+    const right = arr.slice(mid + 1, high + 1);
+    let i = 0;
+    let j = 0;
+    let k = low;
+
+    while (i < left.length && j < right.length) {
+      if (left[i] <= right[j]) {
+        swaps.push([k, arr[k], left[i]]);
+        arr[k++] = left[i++];
       } else {
-        setTimeout(() => {
-          const [barOneIdx, newHeight] = animations[i];
-          const barOneStyle = arrayBars[barOneIdx].style;
-          barOneStyle.height = `${newHeight}px`;
-        }, i * ANIMATION_SPEED_MS);
+        swaps.push([k, arr[k], right[j]]);
+        arr[k++] = right[j++];
       }
     }
-  }
 
-  render() {
-    const { array } = this.state;
-    return (
-      <Grid
-        margin="0 auto"
-        justifyContent={"center"}
-        textAlign={"center"}
-        marginTop="4rem"
-      >
-        <img src={"../../slogan.png"} alt="slogan" height={80} />
-        <Box
-          display="flex"
-          justifyContent="center"
-          alignItems="flex-end"
-          marginTop="3rem"
-        >
-          {array.map((value, idx) => (
-            <Box
-              className="array-bar"
-              key={idx}
-              style={{
-                backgroundColor: PRIMARY_COLOR,
-                height: `${value}px`,
-                width: `${NUMBER_OF_ARRAY_BARS / 10}px`,
-              }}
-            />
-          ))}
-        </Box>
-        <Stack
-          marginTop="4rem"
-          direction="row"
-          justifyContent={"center"}
-          gap="2rem"
-        >
-          <Button
-            variant="contained"
-            onClick={() => this.mergeSort()}
-            sx={{ color: "white", background: "transparent", fontSize: "3rem" }}
-          >
-            <FaPlay />
-          </Button>
-          <Button
-            variant="contained"
-            onClick={() => this.resetArray()}
-            sx={{ color: "white", background: "transparent", fontSize: "3rem" }}
-          >
-            <FaRandom />
-          </Button>
-        </Stack>
-      </Grid>
+    while (i < left.length) {
+      swaps.push([k, arr[k], left[i]]);
+      arr[k++] = left[i++];
+    }
+
+    while (j < right.length) {
+      swaps.push([k, arr[k], right[j]]);
+      arr[k++] = right[j++];
+    }
+  };
+  const mergeSort = (arr, low, high, swaps) => {
+    if (low < high) {
+      const mid = Math.floor((low + high) / 2);
+      mergeSort(arr, low, mid, swaps);
+      mergeSort(arr, mid + 1, high, swaps);
+      merge(arr, low, mid, high, swaps);
+    }
+    return swaps;
+  };
+
+  const animate = (swaps, array, setArray) => {
+    if (swaps.length == 0) {
+      setIsSorted(true);
+      setPaused(true);
+      return;
+    }
+    if (paused) {
+      return;
+    }
+    const [index, oldValue, newValue] = swaps.shift();
+    const newArray = [...array];
+    newArray[index] = newValue;
+    setArray(newArray);
+    setIndices([index]);
+    if (soundRef.current) {
+      playNote(200 + newValue * 500);
+    }
+
+    const id = setTimeout(
+      () => animate(swaps, newArray, setArray),
+      speedRef.current
     );
-  }
-}
+    setTimeoutId(id);
+  };
 
-export default Blocks;
+  return (
+    <>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          marginTop: "2rem",
+        }}
+      >
+        <Typography color="white" fontSize="3rem">
+          <CiMusicNote1 />
+        </Typography>
+        <img
+          src={"../../slogan.png"}
+          alt="slogan"
+          height={80}
+          style={{ margin: "0 1rem" }}
+        />
+        <Typography fontSize="3rem" color="white">
+          {" "}
+          <CiMusicNote1 />
+        </Typography>
+      </Box>
+      <DisplayBars array={array} indices={indices} isSorted={isSorted} />
+      <Stack
+        marginTop="4rem"
+        direction="row"
+        justifyContent={"center"}
+        gap="2rem"
+        alignItems={"center"}
+      >
+        <Box sx={{ width: 300 }}>
+          <Stack direction="row" alignItems={"center"} gap="1.5rem">
+            <Typography fontSize="2rem" color="white" margin="0 auto">
+              <IoMdSpeedometer />
+            </Typography>
+            <Slider
+              size="large"
+              defaultValue={1}
+              valueLabelDisplay="auto"
+              min={1}
+              max={500}
+              onChange={(e, val) => setSpeed(val)}
+              sx={{ color: "turquoise" }}
+            />
+          </Stack>
+          <Stack direction="row" alignItems={"center"} gap="1.5rem">
+            <Typography fontSize="2rem" color="white" margin="0 auto">
+              <GiNetworkBars />
+            </Typography>
+            <Slider
+              size="large"
+              defaultValue={20}
+              valueLabelDisplay="auto"
+              min={10}
+              max={100}
+              onChange={(e, val) => setBars(val)}
+              sx={{ color: "turquoise" }}
+              disabled={!paused}
+            />
+          </Stack>
+        </Box>
+        <Button
+          variant="contained"
+          onClick={() => handlePlayPause(setPaused, paused, isSorted)}
+          sx={{
+            color: "white",
+            background: "transparent",
+            fontSize: "3rem",
+            "&:hover": {
+              background: "transparent",
+            },
+          }}
+        >
+          {paused ? <FaPlay /> : <FaPause />}
+        </Button>
+        <Button
+          variant="contained"
+          onClick={() =>
+            handleRefresh(
+              setPaused,
+              timeoutId,
+              bars,
+              setIsSorted,
+              setArray,
+              setIndices
+            )
+          }
+          sx={{
+            color: "white",
+            background: "transparent",
+            fontSize: "3rem",
+            "&:hover": {
+              background: "transparent",
+            },
+          }}
+        >
+          <FaRandom />
+        </Button>
 
-// Utility function to generate a random number between a given range
-function randomIntFromInterval(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
+        <Button
+          variant="contained"
+          onClick={() => {
+            setSound(!sound);
+          }}
+          sx={{
+            color: "white",
+            background: "transparent",
+            fontSize: "3rem",
+            "&:hover": {
+              background: "transparent",
+            },
+          }}
+        >
+          {sound ? (
+            <VolumeUpIcon sx={{ fontSize: "3rem" }} />
+          ) : (
+            <VolumeOffIcon sx={{ fontSize: "3rem" }} />
+          )}
+        </Button>
+      </Stack>
+    </>
+  );
+};
+
+export default Merge;

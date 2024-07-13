@@ -89,6 +89,7 @@ const Quick = () => {
     setArray(newArray);
     setIndices([i, j]);
     if (soundRef.current) {
+      console.log("POO", array[i]);
       playNote(200 + array[i] * 500);
       playNote(200 + array[j] * 500);
     }
