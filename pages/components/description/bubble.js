@@ -1,6 +1,6 @@
 import { Typography, Grid, Button, Stack, Tooltip } from "@mui/material";
 import React, { useState } from "react";
-import { bubbleSortCode } from "@/pages/code/BubbleSort";
+import { bubbleSortCode } from "@/code/BubbleSort";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { HiOutlineClipboardDocument } from "react-icons/hi2";
