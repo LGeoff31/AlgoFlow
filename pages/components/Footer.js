@@ -26,6 +26,14 @@ const Footer = () => {
         fontSize="1.5rem"
         // alignItems={"center"}
       >
+        Love to hear feedback and which algorithms I should add!
+      </Typography>
+      <Typography
+        color="white"
+        justifyContent={"center"}
+        fontSize="1.5rem"
+        // alignItems={"center"}
+      >
         All code implementations were created by me, feel free to look at the
         github and give it a star! ⭐
       </Typography>
