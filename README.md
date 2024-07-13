@@ -22,4 +22,6 @@ cd algo-flow
 npm run dev
 ```
 
-I'd love to hear feedback to make this the easiest platform for learning! Consider giving a ⭐ to let me know you enjoyed it
+
+I'd love to hear feedback to make this the easiest platform for learning! 
+Consider giving this project a ⭐ to let me know you enjoyed it!
