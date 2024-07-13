@@ -11,7 +11,7 @@ const Description = () => {
   const [selectedLanguage, setSelectedLanguage] = useState("python");
   const copyToClipboard = () => {
     navigator.clipboard
-      .writeText(MergeSort[selectedLanguage])
+      .writeText(mergeSortCode[selectedLanguage])
       .then(() => {
         toast.success("Copied!", {
           position: "top-right",
@@ -173,7 +173,6 @@ const Description = () => {
         >
           <img src={"java.png"} alt="java" height={50} />
         </Button>
-        {/* <Stack sx={{background:"black"}} */}
         <div style={{ position: "relative", marginTop: "1rem" }}>
           <Tooltip title="Copy to Clipboard" arrow>
             <Button

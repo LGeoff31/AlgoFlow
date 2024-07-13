@@ -11,7 +11,7 @@ const Description = () => {
   const [selectedLanguage, setSelectedLanguage] = useState("python");
   const copyToClipboard = () => {
     navigator.clipboard
-      .writeText(MergeSort[selectedLanguage])
+      .writeText(selectionSortCode[selectedLanguage])
       .then(() => {
         toast.success("Copied!", {
           position: "top-right",

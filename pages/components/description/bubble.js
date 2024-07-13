@@ -190,7 +190,7 @@ const Description = () => {
           <SyntaxHighlighter
             language={selectedLanguage}
             style={dark}
-            customStyle={{ height: "50rem", overflowY: "scroll" }}
+            customStyle={{ height: "25rem", overflowY: "scroll" }}
           >
             {bubbleSortCode[selectedLanguage]}
           </SyntaxHighlighter>

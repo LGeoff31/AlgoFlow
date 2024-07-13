@@ -8,7 +8,6 @@ export const bubbleSortCode = {
     return arr`,
   javascript: `function bubbleSort(arr) {
     for (let i = 0; i < arr.length; i++) {
-        // Assumes largest ith numbers are already placed at the end of the array, hence no need to iterate over them
         for (let j = 0; j < arr.length - i - 1; j++) {
             if (arr[j] > arr[j + 1]) {
                 // Swap arr[j] and arr[j + 1]
@@ -21,13 +20,12 @@ export const bubbleSortCode = {
     return arr;
 }
       `,
-  cpp: `std::vector<int> bubbleSort(std::vector<int>& arr) {
+  cpp: `vector<int> bubbleSort(std::vector<int>& arr) {
     for (size_t i = 0; i < arr.size(); ++i) {
         // Assumes largest ith numbers are already placed at the end of the array, hence no need to iterate over them
         for (size_t j = 0; j < arr.size() - i - 1; ++j) {
             if (arr[j] > arr[j + 1]) {
-                // Swap arr[j] and arr[j + 1]
-                std::swap(arr[j], arr[j + 1]);
+                swap(arr[j], arr[j + 1]);
             }
         }
     }
@@ -38,7 +36,6 @@ export const bubbleSortCode = {
         // Assumes largest ith numbers are already placed at the end of the array, hence no need to iterate over them
         for (int j = 0; j < n - i - 1; j++) {
             if (arr[j] > arr[j + 1]) {
-                // Swap arr[j] and arr[j + 1]
                 int temp = arr[j];
                 arr[j] = arr[j + 1];
                 arr[j + 1] = temp;
@@ -52,7 +49,6 @@ export const bubbleSortCode = {
         // Assumes largest ith numbers are already placed at the end of the array, hence no need to iterate over them
         for (int j = 0; j < n - i - 1; j++) {
             if (arr[j] > arr[j + 1]) {
-                // Swap arr[j] and arr[j + 1]
                 int temp = arr[j];
                 arr[j] = arr[j + 1];
                 arr[j + 1] = temp;

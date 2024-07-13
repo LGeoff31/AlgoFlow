@@ -21,11 +21,11 @@ export const selectionSortCode = {
                 minIdx = j;
             }
         }
-        [arr[i], arr[minIdx]] = [arr[minIdx], arr[i]]; // Swap elements
+        [arr[i], arr[minIdx]] = [arr[minIdx], arr[i]];
     }
     return arr;
 }`,
-  cpp: `void selectionSort(std::vector<int>& arr) {
+  cpp: `void selectionSort(vector<int>& arr) {
     int n = arr.size();
     for (int i = 0; i < n; i++) {
         int minElem = arr[i];
@@ -37,7 +37,7 @@ export const selectionSortCode = {
                 minIdx = j;
             }
         }
-        std::swap(arr[i], arr[minIdx]);
+        swap(arr[i], arr[minIdx]);
     }
 }`,
   c: `void selectionSort(int arr[], int n) {
