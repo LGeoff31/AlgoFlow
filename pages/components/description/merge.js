@@ -6,6 +6,7 @@ import { dark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { HiOutlineClipboardDocument } from "react-icons/hi2";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Analysis from "./Analysis";
 
 const Description = () => {
   const [selectedLanguage, setSelectedLanguage] = useState("python");
@@ -40,72 +41,21 @@ const Description = () => {
           display="flex"
           margin="0 auto"
           justifyContent={"center"}
+          marginBottom="2rem"
         >
           <span style={{ color: "#6B7280" }}>Merge</span>
           <span style={{ color: "#e68501", fontWeight: "bold" }}>Sort</span>
         </Typography>
-        <Stack>
-          <Typography
-            fontSize="2rem"
-            marginTop="4rem"
-            marginBottom="1rem"
-            sx={{ textDecoration: "underline" }}
-          >
-            {" "}
-            Divide and Conquer Approach
-          </Typography>
-          <Typography
-            component={"ul"}
-            // justifyContent={"center"}
-            // margin="0 auto"
-            // marginTop="3rem"
-            fontSize="1.5rem"
-            marginLeft="1rem"
-          >
-            <li>
-              Recursively split the array into left and right halves until the
-              array has one element.
-            </li>
-            <li>
-              Begin merging these single element arrays into two element arrays,
-              then four element arrays, etc
-            </li>
-            <li>
-              During the merge process, ensure the two arrays merge to a sorted
-              array using pointers
-            </li>
-            <li>
-              All the single element arrays will have merged to form a sorted
-              array of the original array size ✅
-            </li>
-          </Typography>
-          <Typography
-            fontSize="2rem"
-            marginTop="4rem"
-            marginBottom="1rem"
-            sx={{ textDecoration: "underline" }}
-          >
-            {" "}
-            Complexity Analysis
-          </Typography>
-          <Typography
-            component={"ul"}
-            // justifyContent={"center"}
-            // margin="0 auto"
-            // marginTop="3rem"
-            fontSize="1.5rem"
-            marginLeft="1rem"
-          >
-            <li>
-              Time Complexity: O(nlogn) Worst / Average case | Breaking tree
-              into halves is O(logn) and merging sublists is O(n)
-            </li>
-            <li>
-              Space Complexity: O(n) &nbsp; &nbsp; | The recursive call stack
-              will contain O(n) elements
-            </li>
-          </Typography>
-        </Stack>
+        <Analysis
+          desc="Recursively split the array into left and right halves until the
+            array has one element. Begin merging these single element arrays
+            into two element arrays, then four element arrays, etc During the
+            merge process, ensure the two arrays merge to a sorted array using
+            pointers All the single element arrays will have merged to form a
+            sorted array of the original array size"
+          time="O(nlogn)"
+          space="O(n"
+        />
       </Grid>
       <Grid xs={12} md={6}>
         <Button

@@ -68,7 +68,6 @@ const Homepage = () => {
 
     const id = setTimeout(() => animate(swaps, newArray, setArray));
   };
-
   return (
     <Grid margin="0 auto" justifyContent={"center"} textAlign={"center"}>
       <Stack
@@ -76,7 +75,7 @@ const Homepage = () => {
         alignItems={"center"}
         margin="0 auto"
         justifyContent={"center"}
-        marginTop="5rem"
+        marginTop="4rem"
       >
         <Typography color="white" variant="h3">
           Welcome to&nbsp;
@@ -87,14 +86,14 @@ const Homepage = () => {
         color="white"
         variant="body2"
         fontSize="1.2rem"
-        marginTop="1rem"
-        marginBottom="2rem"
+        marginTop="0.5rem"
+        marginBottom="1rem"
       >
         Learn all the sorting algorithms with visualization
       </Typography>
       <Button variant="contained" color="success" onClick={play}>
         {" "}
-        Start{" "}
+        Animate{" "}
       </Button>
       <DisplayBars array={array} indices={indices} isSorted={false} />
       <Stack direction="row" justifyContent={"space-evenly"} gap={"2rem"}>

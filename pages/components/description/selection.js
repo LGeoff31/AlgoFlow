@@ -6,6 +6,7 @@ import { dark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { HiOutlineClipboardDocument } from "react-icons/hi2";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Analysis from "./Analysis";
 
 const Description = () => {
   const [selectedLanguage, setSelectedLanguage] = useState("python");
@@ -44,54 +45,14 @@ const Description = () => {
           <span style={{ color: "#6B7280" }}>Selection</span>
           <span style={{ color: "#e68501", fontWeight: "bold" }}>Sort</span>
         </Typography>
-        <Stack>
-          <Typography
-            fontSize="2rem"
-            marginTop="4rem"
-            marginBottom="1rem"
-            sx={{ textDecoration: "underline" }}
-          >
-            {" "}
-            Simple sorting algorithm
-          </Typography>
-          <Typography
-            component={"ul"}
-            // justifyContent={"center"}
-            // margin="0 auto"
-            // marginTop="3rem"
-            fontSize="1.5rem"
-            marginLeft="1rem"
-          >
-            <li>
-              The algorithm repeatedly selects the smallest (or largest) element
-              from the unsorted portion of the list and swaps it with the first
-              element of the unsorted part
-            </li>
-            <li>
-              This process is repeated for the remaining unsorted portion until
-              the entire list is sorted.
-            </li>
-          </Typography>
-          <Typography
-            fontSize="2rem"
-            marginTop="4rem"
-            marginBottom="1rem"
-            sx={{ textDecoration: "underline" }}
-          >
-            {" "}
-            Complexity Analysis
-          </Typography>
-          <Typography component={"ul"} fontSize="1.5rem" marginLeft="1rem">
-            <li>
-              Time Complexity: O(n^2) Worst / Average case | Loop through all
-              numbers and for each number, have to potentially swap close to n
-              times, think of the example [n, n-1, n-2, .. 2, 1]
-            </li>
-            <li>
-              Space Complexity: O(1) &nbsp; &nbsp; | Only pointer are used
-            </li>
-          </Typography>
-        </Stack>
+        <Analysis
+          desc="The algorithm repeatedly selects the smallest (or largest) element
+          from the unsorted portion of the list and swaps it with the first
+          element of the unsorted part. This process is repeated for the remaining unsorted portion until
+          the entire list is sorted."
+          time="O(n^2) Worst / Average case"
+          space="O(1)"
+        />
       </Grid>
       <Grid xs={12} md={6}>
         <Button

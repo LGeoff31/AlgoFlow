@@ -6,6 +6,7 @@ import { dark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { HiOutlineClipboardDocument } from "react-icons/hi2";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Analysis from "./Analysis";
 
 const Description = () => {
   const [selectedLanguage, setSelectedLanguage] = useState("python");
@@ -44,58 +45,16 @@ const Description = () => {
           <span style={{ color: "#6B7280" }}>Quick</span>
           <span style={{ color: "#e68501", fontWeight: "bold" }}>Sort</span>
         </Typography>
-        <Stack>
-          <Typography
-            fontSize="2rem"
-            marginTop="4rem"
-            marginBottom="1rem"
-            sx={{ textDecoration: "underline" }}
-          >
-            {" "}
-            Quick sorting algorithm
-          </Typography>
-          <Typography
-            component={"ul"}
-            // justifyContent={"center"}
-            // margin="0 auto"
-            // marginTop="3rem"
-            fontSize="1.5rem"
-            marginLeft="1rem"
-          >
-            <li>
-              QuickSort is a sorting algorithm based on the Divide and Conquer
-              algorithm that picks an element as a pivot and partitions the
-              given array around the picked pivot by placing the pivot in its
-              correct position in the sorted array.
-            </li>
-            <li>
-              Partition is done recursively on each side of the pivot after the
-              pivot is placed in its correct position and this finally sorts the
-              array.
-            </li>
-          </Typography>
-          <Typography
-            fontSize="2rem"
-            marginTop="4rem"
-            marginBottom="1rem"
-            sx={{ textDecoration: "underline" }}
-          >
-            {" "}
-            Complexity Analysis
-          </Typography>
-          <Typography component={"ul"} fontSize="1.5rem" marginLeft="1rem">
-            <li>
-              Time Complexity: O(n^2) Worst / O(nlogn) Average + Best case |
-              Pivot rougly divides array into halves, then linear loop to find
-              all smaller / bigger elements than pivot, worst case pivot is
-              smallest / biggest number
-            </li>
-            <li>
-              Space Complexity: O(n) worst case O(logn) average / best case
-              &nbsp; &nbsp;
-            </li>
-          </Typography>
-        </Stack>
+        <Analysis
+          desc="QuickSort is a sorting algorithm based on the Divide and Conquer
+          algorithm that picks an element as a pivot and partitions the
+          given array around the picked pivot by placing the pivot in its
+          correct position in the sorted array. Partition is done recursively on each side of the pivot after the
+          pivot is placed in its correct position and this finally sorts the
+          array."
+          time="O(n^2) Worst / O(nlogn) Average + Best case"
+          space="O(n) worst case O(logn) average / best case"
+        />
       </Grid>
       <Grid xs={12} md={6}>
         <Button

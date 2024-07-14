@@ -61,8 +61,8 @@ export const DisplayBars = ({ array, indices, isSorted }) => {
         display: "flex",
         alignItems: "flex-end",
         justifyContent: "center",
-        height: "800px",
-        marginTop: "4rem",
+        height: "400px",
+        marginTop: "3rem",
       }}
     >
       {array.map((value, idx) => (
