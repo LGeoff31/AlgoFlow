@@ -7,15 +7,15 @@ const Analysis = ({ desc, time, space }) => {
       <Typography fontSize="2rem" color="#e68501">
         Description
       </Typography>
-      <Typography fontSize="1.5rem">{desc}</Typography>
+      <Typography fontSize={{ md: "1.5rem", xs: "1rem" }}>{desc}</Typography>
       <Typography fontSize="2rem" color="#e68501" marginTop="2rem">
         Time Complexity
       </Typography>
-      <Typography fontSize="1.5rem">{time}</Typography>
+      <Typography fontSize={{ md: "1.5rem", xs: "1rem" }}>{time}</Typography>
       <Typography fontSize="2rem" color="#e68501" marginTop="2rem">
         Space Complexity
       </Typography>
-      <Typography fontSize="1.5rem">{space}</Typography>
+      <Typography fontSize={{ md: "1.5rem", xs: "1rem" }}>{space}</Typography>
     </Stack>
   );
 };

@@ -6,9 +6,8 @@
 
 .flip-card {
   background-color: transparent;
-  width: 300px;
-  height: 300px;
-  perspective: 1000px;
+  width: 500px;
+  height: 500px;
 }
 
 .flip-card-inner {
@@ -40,15 +39,9 @@
 }
 
 .flip-card-back {
-  background-color: #2980b9;
+  background-color: "rgb(36,36,36)";
   color: white;
   transform: rotateY(180deg);
-}
-
-.array-container {
-  position: absolute;
-  left: 100px;
-  /* top: 100px; */
 }
 
 .array-bar {

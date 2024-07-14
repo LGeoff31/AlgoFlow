@@ -43,7 +43,7 @@ const Navbar = () => {
               sx={{
                 transition: "transform 0.3s",
                 color: "#6B7280",
-                fontSize: "2rem",
+                fontSize: { md: "2rem", xs: "1.2rem" },
                 ":hover": {
                   cursor: "pointer",
                   transform: "scale(1.05)",

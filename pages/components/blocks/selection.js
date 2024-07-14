@@ -1,5 +1,13 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Typography, Box, Button, Stack, Slider } from "@mui/material";
+import {
+  Typography,
+  Box,
+  Button,
+  Stack,
+  Slider,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import { FaRandom, FaPlay, FaPause } from "react-icons/fa";
 import { IoMdSpeedometer } from "react-icons/io";
 import { CiMusicNote1 } from "react-icons/ci";
@@ -25,6 +33,8 @@ const Selection = () => {
   const [isSorted, setIsSorted] = useState(false);
   const [array, setArray] = useState([]);
   const [indices, setIndices] = useState([-1, -1]);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.up("sm"));
 
   // Allow sound toggling during animation
   useEffect(() => {
@@ -112,7 +122,7 @@ const Selection = () => {
         <img
           src={"../../slogan.png"}
           alt="slogan"
-          height={80}
+          height={isMobile ? 80 : 40}
           style={{ margin: "0 1rem" }}
         />
         <Typography fontSize="3rem" color="white">
@@ -123,7 +133,7 @@ const Selection = () => {
       <DisplayBars array={array} indices={indices} isSorted={isSorted} />
       <Stack
         marginTop="4rem"
-        direction="row"
+        direction={{ md: "row", xs: "column" }}
         justifyContent={"center"}
         gap="2rem"
         alignItems={"center"}
@@ -159,64 +169,66 @@ const Selection = () => {
             />
           </Stack>
         </Box>
-        <Button
-          variant="contained"
-          onClick={() => handlePlayPause(setPaused, paused, isSorted)}
-          sx={{
-            color: "white",
-            background: "transparent",
-            fontSize: "3rem",
-            "&:hover": {
+        <Stack direction="row">
+          <Button
+            variant="contained"
+            onClick={() => handlePlayPause(setPaused, paused, isSorted)}
+            sx={{
+              color: "white",
               background: "transparent",
-            },
-          }}
-        >
-          {paused ? <FaPlay /> : <FaPause />}
-        </Button>
-        <Button
-          variant="contained"
-          onClick={() =>
-            handleRefresh(
-              setPaused,
-              timeoutId,
-              bars,
-              setIsSorted,
-              setArray,
-              setIndices
-            )
-          }
-          sx={{
-            color: "white",
-            background: "transparent",
-            fontSize: "3rem",
-            "&:hover": {
+              fontSize: "3rem",
+              "&:hover": {
+                background: "transparent",
+              },
+            }}
+          >
+            {paused ? <FaPlay /> : <FaPause />}
+          </Button>
+          <Button
+            variant="contained"
+            onClick={() =>
+              handleRefresh(
+                setPaused,
+                timeoutId,
+                bars,
+                setIsSorted,
+                setArray,
+                setIndices
+              )
+            }
+            sx={{
+              color: "white",
               background: "transparent",
-            },
-          }}
-        >
-          <FaRandom />
-        </Button>
+              fontSize: "3rem",
+              "&:hover": {
+                background: "transparent",
+              },
+            }}
+          >
+            <FaRandom />
+          </Button>
 
-        <Button
-          variant="contained"
-          onClick={() => {
-            setSound(!sound);
-          }}
-          sx={{
-            color: "white",
-            background: "transparent",
-            fontSize: "3rem",
-            "&:hover": {
+          <Button
+            variant="contained"
+            onClick={() => {
+              setSound(!sound);
+            }}
+            sx={{
+              color: "white",
               background: "transparent",
-            },
-          }}
-        >
-          {sound ? (
-            <VolumeUpIcon sx={{ fontSize: "3rem" }} />
-          ) : (
-            <VolumeOffIcon sx={{ fontSize: "3rem" }} />
-          )}
-        </Button>
+              fontSize: "3rem",
+              "&:hover": {
+                background: "transparent",
+              },
+            }}
+          >
+            {sound ? (
+              <VolumeUpIcon sx={{ fontSize: "3rem" }} />
+            ) : (
+              <VolumeOffIcon sx={{ fontSize: "3rem" }} />
+            )}
+          </Button>
+        </Stack>
       </Stack>
     </>
   );

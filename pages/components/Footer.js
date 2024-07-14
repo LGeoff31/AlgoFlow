@@ -15,23 +15,15 @@ const Footer = () => {
         marginTop="4rem"
         color="white"
         justifyContent={"center"}
-        fontSize="2rem"
+        fontSize={{ md: "2rem", xs: "1.5rem" }}
         // alignItems={"center"}
       >
-        Made by Geoffrey Lee ❤️
+        Made by Geoffrey Lee
       </Typography>
       <Typography
         color="white"
         justifyContent={"center"}
-        fontSize="1.5rem"
-        // alignItems={"center"}
-      >
-        Love to hear feedback and which algorithms I should add!
-      </Typography>
-      <Typography
-        color="white"
-        justifyContent={"center"}
-        fontSize="1.5rem"
+        fontSize={{ md: "1.5rem", xs: "1rem" }}
         // alignItems={"center"}
       >
         All code implementations were created by me, feel free to look at the

@@ -77,7 +77,11 @@ const Homepage = () => {
         justifyContent={"center"}
         marginTop="4rem"
       >
-        <Typography color="white" variant="h3">
+        <Typography
+          color="white"
+          fontSize="3rem"
+          display={{ md: "block", xs: "none" }}
+        >
           Welcome to&nbsp;
         </Typography>
         <img src={"../../slogan.png"} alt="slogan" height={70} />
@@ -85,21 +89,32 @@ const Homepage = () => {
       <Typography
         color="white"
         variant="body2"
-        fontSize="1.2rem"
+        fontSize="1.5rem"
         marginTop="0.5rem"
         marginBottom="1rem"
       >
         Learn all the sorting algorithms with visualization
       </Typography>
-      <Button variant="contained" color="success" onClick={play}>
+      {/* <Button variant="contained" color="success" onClick={play}>
         {" "}
         Animate{" "}
-      </Button>
-      <DisplayBars array={array} indices={indices} isSorted={false} />
-      <Stack direction="row" justifyContent={"space-evenly"} gap={"2rem"}>
-        <CardFlip />
-        <CardFlip />
-        <CardFlip />
+      </Button> */}
+      {/* <DisplayBars array={array} indices={indices} isSorted={false} /> */}
+      <Stack
+        direction={{ md: "row", xs: "column" }}
+        justifyContent={"space-evenly"}
+        gap={"2rem"}
+      >
+        <CardFlip
+          src="../../code.png"
+          title="Code Snippets"
+          desc="Support for 5 of the most popular programming languages. Code implementations were created by me in a simplistic and concise way. "
+        />
+        <CardFlip
+          src="../../bars.png"
+          title="User Interactivity"
+          desc="Support for playback speed, numbrs of bars, play/pause, and randomize. These features were made to work during animations to allow you to learn at your own pace! "
+        />
       </Stack>
     </Grid>
   );
