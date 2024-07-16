@@ -13,6 +13,7 @@ const Navbar = () => {
       direction="row"
       alignItems={"center"}
       justifyContent={"space-between"}
+      padding="2rem"
     >
       <Box
         sx={{

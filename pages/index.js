@@ -6,7 +6,11 @@ import React, { useState } from "react";
 
 export default function Home() {
   return (
-    <Grid sx={{ background: "rgb(36,36,36)", padding: "2rem" }}>
+    <Grid
+      sx={{
+        background: "rgb(36,36,36)",
+      }}
+    >
       <Navbar />
       <Homepage />
       <Footer />
