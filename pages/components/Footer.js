@@ -7,60 +7,50 @@ const Footer = () => {
   return (
     <Stack
       direction="row"
-      display="flex"
-      alignItems={"center"}
       sx={{ background: "black" }}
       padding="2rem"
       marginTop="4rem"
-      justifyContent={"space-between"}
+      justifyContent={"center"}
     >
       <Stack direction="column">
         <Typography
-          color="white"
-          fontSize={{ md: "2rem", xs: "1rem" }}
-          justifyContent={"center"}
-          margin="0 auto"
+          sx={{
+            textAlign: "center",
+            color: "grey",
+            textTransform: "uppercase",
+            letterSpacing: "0.3rem",
+            fontSize: "1.5rem",
+          }}
         >
           Geoffrey Lee
         </Typography>
 
-        <Stack direction="row">
+        <Stack
+          direction="row"
+          gap="1rem"
+          marginTop="0.5rem"
+          display="flex"
+          justifyContent={"center"}
+        >
           <SocialIcon
             url="https://github.com/lgeoff31"
             fgColor="orange"
-            bgColor="transparent"
+            bgColor="rgb(36,36,36)"
             title="GitHub"
             target="_blank"
           />
           <SocialIcon
             url="https://www.linkedin.com/in/lgeoff31/"
             fgColor="orange"
-            bgColor="transparent"
+            bgColor="rgb(36,36,36)"
             title="LinkedIn"
             target="_blank"
           />
           <SocialIcon
             url="https://www.geoffreylee.me/"
             fgColor="orange"
-            bgColor="transparent"
+            bgColor="rgb(36,36,36)"
             title="LanguageIcon"
-            target="_blank"
-          />
-        </Stack>
-      </Stack>
-      <Stack>
-        <Typography color="white" fontSize={{ md: "2rem", xs: "0.7rem" }}>
-          Code implementations created by me
-        </Typography>
-        <Stack direction="row" alignItems={"center"}>
-          <Typography color="white" fontSize={{ md: "1.5rem", xs: "0.7rem" }}>
-            ⭐ to support the project
-          </Typography>
-          <SocialIcon
-            url="https://github.com/LGeoff31/algoflow"
-            fgColor="orange"
-            bgColor="transparent"
-            title="GitHub"
             target="_blank"
           />
         </Stack>

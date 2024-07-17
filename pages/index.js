@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import Homepage from "./components/Homepage";
 import Footer from "./components/Footer";
 import React, { useState } from "react";
+import CustomCursor from "./components/CustomCursor";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
         background: "rgb(36,36,36)",
       }}
     >
+      <CustomCursor />
       <Navbar />
       <Homepage />
       <Footer />

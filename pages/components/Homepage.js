@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import CardFlip from "../subcomponents/CardFlip";
 import { DisplayBars, playNote } from "@/utils/utils";
+import { SocialIcon } from "react-social-icons";
 
 const Homepage = () => {
   const [array, setArray] = useState([]);
@@ -77,24 +78,22 @@ const Homepage = () => {
         justifyContent={"center"}
         marginTop="4rem"
       >
-        <Typography
-          color="white"
-          fontSize="3rem"
-          display={{ md: "block", xs: "none" }}
-        >
-          Welcome to&nbsp;
-        </Typography>
         <img src={"../../slogan.png"} alt="slogan" height={70} />
       </Stack>
       <Typography
-        color="white"
-        variant="body2"
-        fontSize="1.5rem"
-        marginTop="0.5rem"
-        marginBottom="1rem"
+        fontFamily="Space Grotesk"
+        sx={{
+          textAlign: "center",
+          color: "grey",
+          marginTop: "1rem",
+          // textTransform: "uppercase",
+          letterSpacing: "0.2rem",
+          fontSize: "2rem",
+        }}
       >
-        Learn all the sorting algorithms with visualization
+        Learn sorting algorithms with visualization
       </Typography>
+
       {/* <Button variant="contained" color="success" onClick={play}>
         {" "}
         Animate{" "}
@@ -104,6 +103,7 @@ const Homepage = () => {
         direction={{ md: "row", xs: "column" }}
         justifyContent={"space-evenly"}
         gap={"2rem"}
+        marginTop="4rem"
       >
         <CardFlip
           src="../../code.png"
@@ -114,6 +114,35 @@ const Homepage = () => {
           src="../../bars.png"
           title="User Interactivity"
           desc="Support for playback speed, numbrs of bars, play/pause, and randomize. These features were made to work during animations to allow you to learn at your own pace! "
+        />
+      </Stack>
+      <Typography
+        color="white"
+        fontSize={{ md: "2rem", xs: "0.7rem" }}
+        fontFamily="Space Grotesk"
+        marginTop="4rem"
+      >
+        All Code Implementations were created by me
+      </Typography>
+      <Stack
+        direction="row"
+        alignItems={"center"}
+        margin="0 auto"
+        justifyContent={"center"}
+      >
+        <Typography
+          color="white"
+          fontSize={{ md: "1.5rem", xs: "0.7rem" }}
+          fontFamily="Space Grotesk"
+        >
+          Give a ⭐ to support the project
+        </Typography>
+        <SocialIcon
+          url="https://github.com/LGeoff31/algoflow"
+          fgColor="orange"
+          bgColor="transparent"
+          title="GitHub"
+          target="_blank"
         />
       </Stack>
     </Grid>

@@ -52,7 +52,12 @@ const CardFlip = ({ src, title, desc }) => {
       justifyContent={"center"}
       margin="0 auto"
     >
-      <Typography color="white" fontSize="2rem" marginBottom="1rem">
+      <Typography
+        color="white"
+        fontSize="2rem"
+        marginBottom="1rem"
+        fontFamily="Space Grotesk"
+      >
         {title}
       </Typography>
       <div

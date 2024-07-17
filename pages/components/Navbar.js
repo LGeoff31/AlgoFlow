@@ -15,20 +15,27 @@ const Navbar = () => {
       justifyContent={"space-between"}
       padding="2rem"
     >
-      <Box
-        sx={{
-          transition: "transform 0.3s",
-          transformOrigin: "left center",
-          ":hover": {
-            cursor: "pointer",
-            transform: "scale(1.05)",
-          },
-        }}
-      >
-        <Link href="/">
+      <Link href="/" sx={{ textDecoration: "none" }}>
+        <Stack
+          direction="row"
+          display="flex"
+          alignItems={"center"}
+          gap="1.3rem"
+          sx={{
+            transition: "transform 0.3s",
+            transformOrigin: "left center",
+            ":hover": {
+              cursor: "pointer",
+              transform: "scale(1.05)",
+            },
+          }}
+        >
           <img src={"../../logo-white.png"} alt="logo" height={50} />
-        </Link>
-      </Box>
+          <Typography color="white" fontSize="2rem" fontFamily="Space Grotesk">
+            AlgoFlow
+          </Typography>
+        </Stack>
+      </Link>
 
       <Stack direction={"row"} gap="1rem">
         {algorithms.map((algorithm, idx) => (
@@ -41,9 +48,10 @@ const Navbar = () => {
             className="active"
           >
             <Box
+              fontFamily="Space Grotesk"
               sx={{
                 transition: "transform 0.3s",
-                color: "#6B7280",
+                color: "white",
                 fontSize: { md: "2rem", xs: "1.2rem" },
                 ":hover": {
                   cursor: "pointer",
