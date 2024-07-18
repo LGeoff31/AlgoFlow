@@ -9,11 +9,13 @@ import {
   useScrollTrigger,
 } from "@mui/material";
 import CardFlip from "../subcomponents/CardFlip";
-import { DisplayBars, playNote } from "@/utils/utils";
+import { DisplayBars, generateArray, playNote } from "@/utils/utils";
 import { SocialIcon } from "react-social-icons";
 
 const Homepage = () => {
   const [array, setArray] = useState([]);
+  const [clicked, setClicked] = useState(false);
+  const [isSorted, setIsSorted] = useState(false);
   const arr = []; // 0.05, 0.1. .. -> 1 -> 0.05
   let barVal = 0.05;
   let incrementing = true;
@@ -29,9 +31,11 @@ const Homepage = () => {
     }
   }
   useEffect(() => {
-    setArray(arr);
+    const newArray = generateArray(60, setIsSorted);
+    setArray(newArray);
   }, []);
   const play = () => {
+    setClicked(true);
     const swaps = bubbleSort();
     animate(swaps, array, setArray);
   };
@@ -56,6 +60,7 @@ const Homepage = () => {
   const animate = (swaps, array, setArray) => {
     console.log(swaps);
     if (swaps.length == 0) {
+      setIsSorted(true);
       return;
     }
     const [i, j] = swaps.shift();
@@ -76,12 +81,13 @@ const Homepage = () => {
         alignItems={"center"}
         margin="0 auto"
         justifyContent={"center"}
-        marginTop="4rem"
+        marginTop="2rem"
       >
-        <img src={"../../slogan.png"} alt="slogan" height={70} />
+        <img src={"../../slogan.png"} alt="slogan" height={90} />
       </Stack>
       <Typography
         fontFamily="Space Grotesk"
+        marginBottom="2rem"
         sx={{
           textAlign: "center",
           color: "grey",
@@ -91,14 +97,43 @@ const Homepage = () => {
           fontSize: "2rem",
         }}
       >
-        Learn sorting algorithms with visualization
+        Learn Sorting Algorithms the Right Way
       </Typography>
+      <Box
+        sx={{
+          height: "3.5rem", // same height as the button
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        {!clicked && (
+          <Button
+            variant="contained"
+            onClick={play}
+            sx={{
+              backgroundColor: "black", // turquoise color
+              padding: "0.75rem 2rem",
+              borderRadius: "50px",
+              fontFamily: "Space Grotesk",
+              "&:hover": {
+                backgroundColor: "darkturquoise",
+              },
+            }}
+          >
+            <Typography
+              fontWeight={"bold"}
+              fontSize="1.5rem"
+              color="turquoise"
+              sx={{ textTransform: "none" }}
+            >
+              Demo
+            </Typography>
+          </Button>
+        )}
+      </Box>
 
-      {/* <Button variant="contained" color="success" onClick={play}>
-        {" "}
-        Animate{" "}
-      </Button> */}
-      {/* <DisplayBars array={array} indices={indices} isSorted={false} /> */}
+      <DisplayBars array={array} indices={indices} isSorted={isSorted} />
       <Stack
         direction={{ md: "row", xs: "column" }}
         justifyContent={"space-evenly"}
@@ -118,7 +153,7 @@ const Homepage = () => {
       </Stack>
       <Typography
         color="white"
-        fontSize={{ md: "2rem", xs: "0.7rem" }}
+        fontSize={{ md: "2rem", xs: "1.2rem" }}
         fontFamily="Space Grotesk"
         marginTop="4rem"
       >
@@ -132,18 +167,29 @@ const Homepage = () => {
       >
         <Typography
           color="white"
-          fontSize={{ md: "1.5rem", xs: "0.7rem" }}
+          fontSize={{ md: "1.5rem", xs: "1rem" }}
           fontFamily="Space Grotesk"
         >
-          Give a ⭐ to support the project
+          Leave a ⭐ to support the project
         </Typography>
-        <SocialIcon
-          url="https://github.com/LGeoff31/algoflow"
-          fgColor="orange"
-          bgColor="transparent"
-          title="GitHub"
-          target="_blank"
-        />
+        <Box
+          sx={{
+            fontSize: "2rem",
+            transition: "transform 0.3s",
+            ":hover": {
+              transform: "scale(1.5)",
+            },
+          }}
+        >
+          <SocialIcon
+            url="https://github.com/LGeoff31/algoflow"
+            fgColor="orange"
+            bgColor="transparent"
+            title="GitHub"
+            target="_blank"
+            style={{ width: 60, height: 60 }}
+          />
+        </Box>
       </Stack>
     </Grid>
   );

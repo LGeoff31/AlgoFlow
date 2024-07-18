@@ -26,12 +26,23 @@ const Navbar = () => {
             transformOrigin: "left center",
             ":hover": {
               cursor: "pointer",
-              transform: "scale(1.05)",
+              transform: "scale(1.1)",
+              color: "#e68501",
             },
           }}
         >
           <img src={"../../logo-white.png"} alt="logo" height={50} />
-          <Typography color="white" fontSize="2rem" fontFamily="Space Grotesk">
+          <Typography
+            color="white"
+            fontSize="2rem"
+            fontFamily="Space Grotesk"
+            display={{ md: "block", xs: "none" }}
+            sx={{
+              ":hover": {
+                color: "#e68501",
+              },
+            }}
+          >
             AlgoFlow
           </Typography>
         </Stack>
@@ -55,7 +66,8 @@ const Navbar = () => {
                 fontSize: { md: "2rem", xs: "1.2rem" },
                 ":hover": {
                   cursor: "pointer",
-                  transform: "scale(1.05)",
+                  transform: "scale(1.1)",
+                  color: "#e68501",
                 },
               }}
             >

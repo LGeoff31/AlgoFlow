@@ -1,4 +1,4 @@
-import { Typography, Link, Stack } from "@mui/material";
+import { Typography, Link, Stack, Box } from "@mui/material";
 import React from "react";
 import { SocialIcon } from "react-social-icons";
 import GitHubIcon from "@mui/icons-material/GitHub";
@@ -32,27 +32,57 @@ const Footer = () => {
           display="flex"
           justifyContent={"center"}
         >
-          <SocialIcon
-            url="https://github.com/lgeoff31"
-            fgColor="orange"
-            bgColor="rgb(36,36,36)"
-            title="GitHub"
-            target="_blank"
-          />
-          <SocialIcon
-            url="https://www.linkedin.com/in/lgeoff31/"
-            fgColor="orange"
-            bgColor="rgb(36,36,36)"
-            title="LinkedIn"
-            target="_blank"
-          />
-          <SocialIcon
-            url="https://www.geoffreylee.me/"
-            fgColor="orange"
-            bgColor="rgb(36,36,36)"
-            title="LanguageIcon"
-            target="_blank"
-          />
+          <Box
+            sx={{
+              fontSize: "2rem",
+              transition: "transform 0.3s",
+              ":hover": {
+                transform: "scale(1.5)",
+              },
+            }}
+          >
+            <SocialIcon
+              url="https://github.com/lgeoff31"
+              fgColor="orange"
+              bgColor="rgb(36,36,36)"
+              title="GitHub"
+              target="_blank"
+            />
+          </Box>
+          <Box
+            sx={{
+              fontSize: "2rem",
+              transition: "transform 0.3s",
+              ":hover": {
+                transform: "scale(1.5)",
+              },
+            }}
+          >
+            <SocialIcon
+              url="https://www.linkedin.com/in/lgeoff31/"
+              fgColor="orange"
+              bgColor="rgb(36,36,36)"
+              title="LinkedIn"
+              target="_blank"
+            />
+          </Box>
+          <Box
+            sx={{
+              fontSize: "2rem",
+              transition: "transform 0.3s",
+              ":hover": {
+                transform: "scale(1.5)",
+              },
+            }}
+          >
+            <SocialIcon
+              url="https://www.geoffreylee.me/"
+              fgColor="orange"
+              bgColor="rgb(36,36,36)"
+              title="LanguageIcon"
+              target="_blank"
+            />
+          </Box>
         </Stack>
       </Stack>
     </Stack>
