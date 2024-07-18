@@ -88,6 +88,8 @@ const CardFlip = ({ src, title, desc }) => {
               justifyContent="center"
               alignItems="center"
               height="100%"
+              padding="2rem"
+              sx={{ fontFamily: "Space Grotesk" }}
             >
               {desc}
             </Typography>

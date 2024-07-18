@@ -36,22 +36,16 @@ const Description = () => {
   return (
     <Grid container sx={{ color: "white", marginTop: "4rem" }}>
       <Grid item xs={12} md={6} container direction={"column"}>
-        <Typography
-          variant="h2"
-          display="flex"
-          margin="0 auto"
-          justifyContent={"center"}
-        >
-          <span style={{ color: "#6B7280" }}>Bubble</span>
-          <span style={{ color: "#e68501", fontWeight: "bold" }}>Sort</span>
-        </Typography>
         <Analysis
           desc="Repeatedly swapping the adjacent elements if they are in the wrong
           order. Traverse from left and compare adjacent elements and the higher
           one is placed at right side. In this way, the largest element is moved to the rightmost end at
           first. This process is then continued to find the second largest and
           place it and so on until the data is sorted"
-          time="O(n^2) Worst / Average case"
+          name="Bubble"
+          average="O(n^2)"
+          best="O(n)"
+          worst="O(n^2)"
           space="O(1)"
         />
       </Grid>
@@ -145,7 +139,7 @@ const Description = () => {
           <SyntaxHighlighter
             language={selectedLanguage}
             style={dark}
-            customStyle={{ height: "25rem", overflowY: "scroll" }}
+            customStyle={{ height: "40.5rem", overflowY: "scroll" }}
           >
             {bubbleSortCode[selectedLanguage]}
           </SyntaxHighlighter>

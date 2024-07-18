@@ -36,21 +36,15 @@ const Description = () => {
   return (
     <Grid container sx={{ color: "white", marginTop: "4rem" }}>
       <Grid item xs={12} md={6} container direction={"column"}>
-        <Typography
-          variant="h2"
-          display="flex"
-          margin="0 auto"
-          justifyContent={"center"}
-        >
-          <span style={{ color: "#6B7280" }}>Selection</span>
-          <span style={{ color: "#e68501", fontWeight: "bold" }}>Sort</span>
-        </Typography>
         <Analysis
           desc="The algorithm repeatedly selects the smallest (or largest) element
           from the unsorted portion of the list and swaps it with the first
           element of the unsorted part. This process is repeated for the remaining unsorted portion until
           the entire list is sorted."
-          time="O(n^2) Worst / Average case"
+          name="Selection"
+          average="O(n^2)"
+          best="O(n^2)"
+          worst="O(n^2)"
           space="O(1)"
         />
       </Grid>
@@ -144,7 +138,7 @@ const Description = () => {
           <SyntaxHighlighter
             language={selectedLanguage}
             style={dark}
-            customStyle={{ height: "28rem", overflowY: "scroll" }}
+            customStyle={{ height: "38.5rem", overflowY: "scroll" }}
           >
             {selectionSortCode[selectedLanguage]}
           </SyntaxHighlighter>

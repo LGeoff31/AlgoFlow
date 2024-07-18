@@ -36,16 +36,6 @@ const Description = () => {
   return (
     <Grid container sx={{ color: "white", marginTop: "4rem" }}>
       <Grid item xs={12} md={6} container direction={"column"}>
-        <Typography
-          variant="h2"
-          display="flex"
-          margin="0 auto"
-          justifyContent={"center"}
-          marginBottom="2rem"
-        >
-          <span style={{ color: "#6B7280" }}>Merge</span>
-          <span style={{ color: "#e68501", fontWeight: "bold" }}>Sort</span>
-        </Typography>
         <Analysis
           desc="Recursively split the array into left and right halves until the
             array has one element. Begin merging these single element arrays
@@ -53,8 +43,11 @@ const Description = () => {
             merge process, ensure the two arrays merge to a sorted array using
             pointers All the single element arrays will have merged to form a
             sorted array of the original array size"
-          time="O(nlogn)"
-          space="O(n"
+          name="Merge"
+          average="O(nlogn)"
+          best="O(nlogn)"
+          worst="O(nlogn)"
+          space="O(n)"
         />
       </Grid>
       <Grid xs={12} md={6}>
@@ -146,7 +139,7 @@ const Description = () => {
           <SyntaxHighlighter
             language={selectedLanguage}
             style={dark}
-            customStyle={{ height: "40rem", overflowY: "scroll" }}
+            customStyle={{ height: "43.5rem", overflowY: "scroll" }}
           >
             {mergeSortCode[selectedLanguage]}
           </SyntaxHighlighter>

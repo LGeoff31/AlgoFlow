@@ -36,15 +36,6 @@ const Description = () => {
   return (
     <Grid container sx={{ color: "white", marginTop: "4rem" }}>
       <Grid item xs={12} md={6} container direction={"column"}>
-        <Typography
-          variant="h2"
-          display="flex"
-          margin="0 auto"
-          justifyContent={"center"}
-        >
-          <span style={{ color: "#6B7280" }}>Quick</span>
-          <span style={{ color: "#e68501", fontWeight: "bold" }}>Sort</span>
-        </Typography>
         <Analysis
           desc="QuickSort is a sorting algorithm based on the Divide and Conquer
           algorithm that picks an element as a pivot and partitions the
@@ -52,8 +43,11 @@ const Description = () => {
           correct position in the sorted array. Partition is done recursively on each side of the pivot after the
           pivot is placed in its correct position and this finally sorts the
           array."
-          time="O(n^2) Worst / O(nlogn) Average + Best case"
-          space="O(n) worst case O(logn) average / best case"
+          name="Quick"
+          average="O(nlogn)"
+          best="O(nlogn)"
+          worst="O(n)"
+          space="O(n)"
         />
       </Grid>
       <Grid xs={12} md={6}>
@@ -146,7 +140,7 @@ const Description = () => {
           <SyntaxHighlighter
             language={selectedLanguage}
             style={dark}
-            customStyle={{ height: "35rem", overflowY: "scroll" }}
+            customStyle={{ height: "43.5rem", overflowY: "scroll" }}
           >
             {quickSortCode[selectedLanguage]}
           </SyntaxHighlighter>

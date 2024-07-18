@@ -143,12 +143,12 @@ const Homepage = () => {
         <CardFlip
           src="../../code.png"
           title="Code Snippets"
-          desc="Support for 5 of the most popular programming languages. Code implementations were created by me in a simplistic and concise way. "
+          desc="Support for 5 of the most popular programming languages."
         />
         <CardFlip
           src="../../bars.png"
           title="User Interactivity"
-          desc="Support for playback speed, numbrs of bars, play/pause, and randomize. These features were made to work during animations to allow you to learn at your own pace! "
+          desc="Learn at your own pace with the controls designed for customization."
         />
       </Stack>
       <Typography
