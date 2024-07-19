@@ -15,7 +15,7 @@ import {
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { MathJax, MathJaxContext } from "better-react-mathjax";
 
-const Analysis = ({ desc, average, best, worst, space }) => {
+const Analysis = ({ desc, average, best, worst, space, name }) => {
   const [descOpen, setDescOpen] = useState(true);
   const [analysisOpen, setAnalysisOpen] = useState(true);
 
@@ -30,14 +30,23 @@ const Analysis = ({ desc, average, best, worst, space }) => {
   return (
     <MathJaxContext>
       <Stack
-        marginRight="2rem"
         sx={{
           backgroundColor: "black",
           color: "white",
           padding: "3rem",
           borderRadius: "8px",
+          marginBottom: "2rem",
         }}
       >
+        <Typography
+          fontSize="3rem"
+          display="flex"
+          margin="0 auto"
+          justifyContent={"center"}
+        >
+          <span style={{ color: "#6B7280" }}>{name}</span>
+          <span style={{ color: "#e68501", fontWeight: "bold" }}>Sort</span>
+        </Typography>
         <Stack
           direction="row"
           alignItems="center"
@@ -45,7 +54,7 @@ const Analysis = ({ desc, average, best, worst, space }) => {
           style={{ cursor: "pointer" }}
         >
           <Typography
-            fontSize="2.7rem"
+            fontSize={{ md: "2.7rem", xs: "2rem" }}
             color="#e68501"
             marginRight="0.5rem"
             sx={{ fontFamily: "Space Grotesk" }}
@@ -78,7 +87,7 @@ const Analysis = ({ desc, average, best, worst, space }) => {
           style={{ cursor: "pointer" }}
         >
           <Typography
-            fontSize="2.5rem"
+            fontSize={{ md: "2.5rem", xs: "2rem" }}
             color="#e68501"
             marginRight="0.5rem"
             sx={{ fontFamily: "Space Grotesk" }}
@@ -105,23 +114,35 @@ const Analysis = ({ desc, average, best, worst, space }) => {
                     scope="row"
                     style={{
                       fontFamily: "Space Grotesk",
-                      fontSize: "2rem",
+
                       color: "white",
                       backgroundColor: "black",
                     }}
                   >
-                    Average case
+                    <Typography
+                      sx={{
+                        fontSize: { md: "2rem", xs: "1.5rem" },
+                        fontFamily: "Space Grotesk",
+                      }}
+                    >
+                      Average case
+                    </Typography>
                   </TableCell>
                   <TableCell
                     align="right"
                     style={{
-                      fontSize: "2rem",
                       color: "#f0f0f0",
                       backgroundColor: "black",
-                      fontFamily: "monospace",
                     }}
                   >
-                    <MathJax>{`\\( ${average} \\)`}</MathJax>
+                    <Typography
+                      sx={{
+                        fontSize: { md: "2rem", xs: "1.5rem" },
+                        fontFamily: "Space Grotesk",
+                      }}
+                    >
+                      <MathJax>{`\\( ${average} \\)`}</MathJax>
+                    </Typography>
                   </TableCell>
                 </TableRow>
                 <TableRow>
@@ -129,24 +150,34 @@ const Analysis = ({ desc, average, best, worst, space }) => {
                     component="th"
                     scope="row"
                     style={{
-                      fontFamily: "Space Grotesk",
-                      fontSize: "2rem",
                       color: "white",
                       backgroundColor: "black",
                     }}
                   >
-                    Best case
+                    <Typography
+                      sx={{
+                        fontSize: { md: "2rem", xs: "1.5rem" },
+                        fontFamily: "Space Grotesk",
+                      }}
+                    >
+                      Best case
+                    </Typography>
                   </TableCell>
                   <TableCell
                     align="right"
                     style={{
-                      fontSize: "2rem",
                       color: "#f0f0f0",
                       backgroundColor: "black",
-                      fontFamily: "monospace",
                     }}
                   >
-                    <MathJax>{`\\( ${best} \\)`}</MathJax>
+                    <Typography
+                      sx={{
+                        fontSize: { md: "2rem", xs: "1.5rem" },
+                        fontFamily: "Space Grotesk",
+                      }}
+                    >
+                      <MathJax>{`\\( ${best} \\)`}</MathJax>
+                    </Typography>
                   </TableCell>
                 </TableRow>
                 <TableRow>
@@ -154,24 +185,34 @@ const Analysis = ({ desc, average, best, worst, space }) => {
                     component="th"
                     scope="row"
                     style={{
-                      fontFamily: "Space Grotesk",
-                      fontSize: "2rem",
                       color: "white",
                       backgroundColor: "black",
                     }}
                   >
-                    Worst case
+                    <Typography
+                      sx={{
+                        fontSize: { md: "2rem", xs: "1.5rem" },
+                        fontFamily: "Space Grotesk",
+                      }}
+                    >
+                      Worst case
+                    </Typography>
                   </TableCell>
                   <TableCell
                     align="right"
                     style={{
-                      fontSize: "2rem",
                       color: "#f0f0f0",
                       backgroundColor: "black",
-                      fontFamily: "monospace",
                     }}
                   >
-                    <MathJax>{`\\( ${worst} \\)`}</MathJax>
+                    <Typography
+                      sx={{
+                        fontSize: { md: "2rem", xs: "1.5rem" },
+                        fontFamily: "Space Grotesk",
+                      }}
+                    >
+                      <MathJax>{`\\( ${worst} \\)`}</MathJax>
+                    </Typography>
                   </TableCell>
                 </TableRow>
                 <TableRow>
@@ -179,24 +220,34 @@ const Analysis = ({ desc, average, best, worst, space }) => {
                     component="th"
                     scope="row"
                     style={{
-                      fontFamily: "Space Grotesk",
-                      fontSize: "2rem",
                       color: "white",
                       backgroundColor: "black",
                     }}
                   >
-                    Space Complexity
+                    <Typography
+                      sx={{
+                        fontSize: { md: "2rem", xs: "1.5rem" },
+                        fontFamily: "Space Grotesk",
+                      }}
+                    >
+                      Space Complexity
+                    </Typography>
                   </TableCell>
                   <TableCell
                     align="right"
                     style={{
-                      fontSize: "2rem",
                       color: "#f0f0f0",
                       backgroundColor: "black",
-                      fontFamily: "monospace",
                     }}
                   >
-                    <MathJax>{`\\( ${space} \\)`}</MathJax>
+                    <Typography
+                      sx={{
+                        fontSize: { md: "2rem", xs: "1.5rem" },
+                        fontFamily: "Space Grotesk",
+                      }}
+                    >
+                      <MathJax>{`\\( ${space} \\)`}</MathJax>
+                    </Typography>
                   </TableCell>
                 </TableRow>
               </TableBody>

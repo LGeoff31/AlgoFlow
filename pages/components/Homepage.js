@@ -7,6 +7,8 @@ import {
   Link,
   Button,
   useScrollTrigger,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import CardFlip from "../subcomponents/CardFlip";
 import { DisplayBars, generateArray, playNote } from "@/utils/utils";
@@ -16,6 +18,8 @@ const Homepage = () => {
   const [array, setArray] = useState([]);
   const [clicked, setClicked] = useState(false);
   const [isSorted, setIsSorted] = useState(false);
+  const theme = useTheme();
+  const isDesktop = useMediaQuery(theme.breakpoints.up("sm"));
   const arr = []; // 0.05, 0.1. .. -> 1 -> 0.05
   let barVal = 0.05;
   let incrementing = true;
@@ -83,7 +87,11 @@ const Homepage = () => {
         justifyContent={"center"}
         marginTop="2rem"
       >
-        <img src={"../../slogan.png"} alt="slogan" height={90} />
+        <img
+          src={"../../slogan.png"}
+          alt="slogan"
+          height={isDesktop ? 90 : 50}
+        />
       </Stack>
       <Typography
         fontFamily="Space Grotesk"
@@ -94,7 +102,7 @@ const Homepage = () => {
           marginTop: "1rem",
           // textTransform: "uppercase",
           letterSpacing: "0.2rem",
-          fontSize: "2rem",
+          fontSize: { md: "2rem", xs: "1.5rem" },
         }}
       >
         Learn Sorting Algorithms the Right Way

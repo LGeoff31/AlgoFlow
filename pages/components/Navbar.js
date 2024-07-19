@@ -13,7 +13,7 @@ const Navbar = () => {
       direction="row"
       alignItems={"center"}
       justifyContent={"space-between"}
-      padding="2rem"
+      padding={{ md: "2rem", xs: "2rem" }}
     >
       <Link href="/" sx={{ textDecoration: "none" }}>
         <Stack

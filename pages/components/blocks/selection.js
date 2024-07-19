@@ -27,8 +27,8 @@ const Selection = () => {
   const soundRef = useRef(sound);
   const [paused, setPaused] = useState(true);
   const [timeoutId, setTimeoutId] = useState(null);
-  const [bars, setBars] = useState(20);
-  const [speed, setSpeed] = useState(1);
+  const [bars, setBars] = useState(28);
+  const [speed, setSpeed] = useState(100);
   const speedRef = useRef(speed);
   const [isSorted, setIsSorted] = useState(false);
   const [array, setArray] = useState([]);
@@ -145,7 +145,7 @@ const Selection = () => {
             </Typography>
             <Slider
               size="large"
-              defaultValue={1}
+              defaultValue={100}
               valueLabelDisplay="auto"
               min={1}
               max={500}
@@ -159,7 +159,7 @@ const Selection = () => {
             </Typography>
             <Slider
               size="large"
-              defaultValue={20}
+              defaultValue={28}
               valueLabelDisplay="auto"
               min={10}
               max={100}

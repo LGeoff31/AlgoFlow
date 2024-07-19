@@ -63,6 +63,7 @@ export const DisplayBars = ({ array, indices, isSorted }) => {
         justifyContent: "center",
         height: "400px",
         marginTop: "3rem",
+        padding: "2rem",
       }}
     >
       {array.map((value, idx) => (

@@ -8,7 +8,7 @@ import CustomCursor from "./components/CustomCursor";
 const Bubble = () => {
   return (
     <>
-      <Grid sx={{ background: "rgb(36,36,36)", padding: "2rem" }}>
+      <Grid sx={{ background: "rgb(36,36,36)" }}>
         <CustomCursor />
         <Navbar />
         <Blocks />
