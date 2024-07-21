@@ -21,7 +21,6 @@ const Navbar = () => {
     { name: "Heap", route: "/heap" },
     { name: "Selection", route: "/selection" },
     { name: "Bubble", route: "/bubble" },
-    { name: "Leave a Review", route: "/review" },
   ];
   return (
     <>
