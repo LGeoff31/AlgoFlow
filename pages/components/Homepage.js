@@ -14,11 +14,13 @@ import {
 import CardFlip from "../subcomponents/CardFlip";
 import { DisplayBars, generateArray, playNote } from "@/utils/utils";
 import { SocialIcon } from "react-social-icons";
+import AddReview from "./AddReview";
 
 const Homepage = () => {
   const [array, setArray] = useState([]);
   const [clicked, setClicked] = useState(false);
   const [isSorted, setIsSorted] = useState(false);
+  const [commentsArray, setCommentsArray] = useState([]);
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up("sm"));
   const arr = []; // 0.05, 0.1. .. -> 1 -> 0.05
@@ -200,7 +202,30 @@ const Homepage = () => {
           />
         </Box>
       </Stack>
-      <TextField>Add a review</TextField>
+      <AddReview
+        commentsArray={commentsArray}
+        setCommentsArray={setCommentsArray}
+      />
+      <Box sx={{ marginTop: "2rem" }}>
+        {commentsArray.map((comment, index) => (
+          <Box
+            key={index}
+            sx={{
+              backgroundColor: "white",
+              color: "black",
+              padding: "1rem",
+              borderRadius: "8px",
+              marginBottom: "1rem",
+              textAlign: "left",
+            }}
+          >
+            <Typography variant="h6" fontWeight="bold">
+              {comment.name}
+            </Typography>
+            <Typography variant="body1">{comment.comment}</Typography>
+          </Box>
+        ))}
+      </Box>
     </Grid>
   );
 };
