@@ -67,3 +67,25 @@
   transition: left 0.2s ease-out, top 0.2s ease-out;
   box-shadow: 0 0 0 3px #c25604;
 }
+
+/* Navbar */
+.hamburger-line {
+  width: 30px;
+  height: 3px;
+  transition: all 200ms ease;
+  margin: 6px;
+}
+
+.mobile-nav-wrapper {
+  clip-path: circle(1px at 100% 0%);
+  -webkit-clip-path: circle(0 at 100% 0%);
+  pointer-events: none;
+  transition: all 500ms ease;
+}
+
+.mobile-nav-wrapper.open {
+  clip-path: circle(1200px at 100% 0%);
+  -webkit-clip-path: circle(1200px at 100% 0%);
+  transition: all 500ms ease;
+  pointer-events: all;
+}
