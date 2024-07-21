@@ -1,6 +1,6 @@
 import { Typography, Grid, Button, Stack, Tooltip } from "@mui/material";
 import React, { useState } from "react";
-import { quickSortCode } from "@/code/QuickSort";
+import { heapSortCode } from "@/code/HeapSort";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { HiOutlineClipboardDocument } from "react-icons/hi2";
@@ -12,7 +12,7 @@ const Description = () => {
   const [selectedLanguage, setSelectedLanguage] = useState("python");
   const copyToClipboard = () => {
     navigator.clipboard
-      .writeText(quickSortCode[selectedLanguage])
+      .writeText(heapSortCode[selectedLanguage])
       .then(() => {
         toast.success("Copied!", {
           position: "top-right",
@@ -37,17 +37,12 @@ const Description = () => {
     <Grid container sx={{ color: "white", marginTop: "4rem" }}>
       <Grid item xs={12} md={6} container direction={"column"}>
         <Analysis
-          desc="QuickSort is a sorting algorithm based on the Divide and Conquer
-          algorithm that picks an element as a pivot and partitions the
-          given array around the picked pivot by placing the pivot in its
-          correct position in the sorted array. Partition is done recursively on each side of the pivot after the
-          pivot is placed in its correct position and this finally sorts the
-          array."
-          name="Quick"
+          desc="Transform the array into a max heap, where the parent node is greater than or equal to its child nodes. Once the max heap is built, repeatedly extract the maximum element from the heap and place it at the end of the array. Then, reheapify the remaining elements to restore the heap property. Continue this process until the entire array is sorted."
+          name="Heap"
           average="O(nlogn)"
           best="O(nlogn)"
-          worst="O(n)"
-          space="O(n)"
+          worst="O(nlogn)"
+          space="O(1)"
         />
       </Grid>
       <Grid xs={12} md={6}>
@@ -116,7 +111,6 @@ const Description = () => {
         >
           <img src={"java.png"} alt="java" height={50} />
         </Button>
-        {/* <Stack sx={{background:"black"}} */}
         <div style={{ position: "relative", marginTop: "1rem" }}>
           <Tooltip title="Copy to Clipboard" arrow>
             <Button
@@ -142,7 +136,7 @@ const Description = () => {
             style={dark}
             customStyle={{ height: "43.5rem", overflowY: "scroll" }}
           >
-            {quickSortCode[selectedLanguage]}
+            {heapSortCode[selectedLanguage]}
           </SyntaxHighlighter>
         </div>
         <ToastContainer />

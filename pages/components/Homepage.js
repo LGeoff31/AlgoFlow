@@ -9,6 +9,7 @@ import {
   useScrollTrigger,
   useMediaQuery,
   useTheme,
+  TextField,
 } from "@mui/material";
 import CardFlip from "../subcomponents/CardFlip";
 import { DisplayBars, generateArray, playNote } from "@/utils/utils";
@@ -199,6 +200,7 @@ const Homepage = () => {
           />
         </Box>
       </Stack>
+      <TextField>Add a review</TextField>
     </Grid>
   );
 };

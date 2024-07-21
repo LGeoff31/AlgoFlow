@@ -6,7 +6,7 @@ import { dark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { HiOutlineClipboardDocument } from "react-icons/hi2";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Analysis from "./Analysis";
+import Analysis from "./analysis";
 
 const Description = () => {
   const [selectedLanguage, setSelectedLanguage] = useState("python");
