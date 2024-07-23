@@ -44,7 +44,17 @@ const AddReview = ({ commentsArray, setCommentsArray }) => {
       <Button
         variant="contained"
         onClick={() => setOpen(true)}
-        sx={{ width: "10%", margin: "0 auto" }}
+        sx={{
+          borderRadius: "30px",
+          backgroundColor: "#2196F3",
+          padding: "10px 20px",
+          margin: "0 auto",
+          textTransform: "none",
+          fontSize: "1rem",
+          "&:hover": {
+            backgroundColor: "#1976D2",
+          },
+        }}
       >
         Add a Review &nbsp; <MdOutlineRateReview fontSize="2rem" />
       </Button>
