@@ -1,4 +1,12 @@
-import { Typography, Grid, Button, Stack, Tooltip } from "@mui/material";
+import {
+  Typography,
+  Grid,
+  Button,
+  Stack,
+  Tooltip,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import React, { useState } from "react";
 import { selectionSortCode } from "@/code/SelectionSort";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -10,6 +18,8 @@ import Analysis from "./Analysis";
 
 const Description = () => {
   const [selectedLanguage, setSelectedLanguage] = useState("python");
+  const theme = useTheme();
+  const isDesktop = useMediaQuery(theme.breakpoints.up("sm"));
   const copyToClipboard = () => {
     navigator.clipboard
       .writeText(selectionSortCode[selectedLanguage])
@@ -138,7 +148,11 @@ const Description = () => {
           <SyntaxHighlighter
             language={selectedLanguage}
             style={dark}
-            customStyle={{ height: "38.5rem", overflowY: "scroll" }}
+            customStyle={{
+              height: "38.5rem",
+              overflowY: "scroll",
+              fontSize: isDesktop ? "1rem" : "0.6rem",
+            }}
           >
             {selectionSortCode[selectedLanguage]}
           </SyntaxHighlighter>

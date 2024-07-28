@@ -34,7 +34,7 @@ const Homepage = () => {
     }
   }
   useEffect(() => {
-    const newArray = generateArray(60, setIsSorted);
+    const newArray = generateArray(50, setIsSorted);
     setArray(newArray);
   }, []);
   const play = () => {

@@ -57,13 +57,7 @@ const Navbar = () => {
           />
         </Box>
         <Flex
-          className={
-            isOpen
-              ? isDesktop
-                ? "desktop-nav-wrapper open"
-                : "mobile-nav-wrapper open"
-              : "mobile-nav-wrapper"
-          }
+          className={isOpen ? "mobile-nav-wrapper open" : "mobile-nav-wrapper"}
           position="fixed"
           top={0}
           left={0}
@@ -75,11 +69,20 @@ const Navbar = () => {
           p={6}
         >
           <Stack gap="1.5rem">
+            <Typography
+              color="orange"
+              fontSize={{ md: "2rem", xs: "1.5rem" }}
+              margin="0 auto"
+              marginTop="2rem"
+              fontFamily="Space Grotesk"
+            >
+              Select an Algorithm
+            </Typography>
             <Stack
               display="flex"
               direction={"column"}
               gap="1rem"
-              textAlign={{ md: "right", xs: "center" }}
+              textAlign={"center"}
               marginRight="1%"
               marginTop="5rem"
             >
@@ -96,6 +99,9 @@ const Navbar = () => {
                       transition: "transform 0.3s",
                       color: "white",
                       fontSize: "2rem",
+                      "&:hover": {
+                        color: "orange",
+                      },
                     }}
                   >
                     {algorithm.name}

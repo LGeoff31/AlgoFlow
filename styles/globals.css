@@ -92,7 +92,7 @@
 
 .mobile-nav-wrapper.open {
   clip-path: circle(1200px at 100% 0%);
-  -webkit-clip-path: circle(1200px at 100% 0%);
+  -webkit-clip-path: circle(2400px at 100% 0%);
   transition: all 500ms ease;
   pointer-events: all;
 }
