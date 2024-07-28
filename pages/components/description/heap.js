@@ -22,8 +22,8 @@ const Description = () => {
           pauseOnHover: false,
           progress: undefined,
           style: {
-            backgroundColor: "#008a39", // Set background color to red
-            color: "#fff", // Set text color to white
+            backgroundColor: "#008a39",
+            color: "#fff",
             textAlign: "center",
           },
         });

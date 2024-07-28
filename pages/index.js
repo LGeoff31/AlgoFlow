@@ -4,6 +4,8 @@ import Homepage from "./components/Homepage";
 import Footer from "./components/Footer";
 import React, { useState } from "react";
 import CustomCursor from "./components/CustomCursor";
+import AddReview from "./components/AddReview";
+import Reviews from "./components/Reviews";
 
 export default function Home() {
   return (
@@ -15,6 +17,8 @@ export default function Home() {
       <CustomCursor />
       <Navbar />
       <Homepage />
+      <AddReview />
+      <Reviews />
       <Footer />
     </Grid>
   );

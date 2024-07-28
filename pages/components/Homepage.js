@@ -4,17 +4,13 @@ import {
   Grid,
   Stack,
   Box,
-  Link,
   Button,
-  useScrollTrigger,
   useMediaQuery,
   useTheme,
-  TextField,
 } from "@mui/material";
 import CardFlip from "../subcomponents/CardFlip";
 import { DisplayBars, generateArray, playNote } from "@/utils/utils";
 import { SocialIcon } from "react-social-icons";
-import AddReview from "./AddReview";
 
 const Homepage = () => {
   const [array, setArray] = useState([]);
@@ -103,7 +99,6 @@ const Homepage = () => {
           textAlign: "center",
           color: "grey",
           marginTop: "1rem",
-          // textTransform: "uppercase",
           letterSpacing: "0.2rem",
           fontSize: { md: "2rem", xs: "1.5rem" },
         }}
@@ -112,7 +107,7 @@ const Homepage = () => {
       </Typography>
       <Box
         sx={{
-          height: "3.5rem", // same height as the button
+          height: "3.5rem",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -123,7 +118,7 @@ const Homepage = () => {
             variant="contained"
             onClick={play}
             sx={{
-              backgroundColor: "black", // turquoise color
+              backgroundColor: "black",
               padding: "0.75rem 2rem",
               borderRadius: "50px",
               fontFamily: "Space Grotesk",
@@ -202,30 +197,6 @@ const Homepage = () => {
           />
         </Box>
       </Stack>
-      <AddReview
-        commentsArray={commentsArray}
-        setCommentsArray={setCommentsArray}
-      />
-      <Box sx={{ marginTop: "2rem" }}>
-        {commentsArray.map((comment, index) => (
-          <Box
-            key={index}
-            sx={{
-              backgroundColor: "white",
-              color: "black",
-              padding: "1rem",
-              borderRadius: "8px",
-              marginBottom: "1rem",
-              textAlign: "left",
-            }}
-          >
-            <Typography variant="h6" fontWeight="bold">
-              {comment.name}
-            </Typography>
-            <Typography variant="body1">{comment.comment}</Typography>
-          </Box>
-        ))}
-      </Box>
     </Grid>
   );
 };
