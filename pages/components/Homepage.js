@@ -9,7 +9,12 @@ import {
   useTheme,
 } from "@mui/material";
 import CardFlip from "../subcomponents/CardFlip";
-import { DisplayBars, generateArray, playNote } from "@/utils/utils";
+import {
+  DisplayBars,
+  generateArray,
+  playCompletionSound,
+  playNote,
+} from "@/utils/utils";
 import { SocialIcon } from "react-social-icons";
 
 const Homepage = () => {
@@ -64,6 +69,7 @@ const Homepage = () => {
     console.log(swaps);
     if (swaps.length == 0) {
       setIsSorted(true);
+      playCompletionSound();
       return;
     }
     const [i, j] = swaps.shift();
@@ -161,15 +167,17 @@ const Homepage = () => {
         color="white"
         fontSize={{ md: "2rem", xs: "1.2rem" }}
         fontFamily="Space Grotesk"
-        marginTop="4rem"
+        marginTop="6rem"
       >
-        All Code Implementations were created by me
+        Code implementations were created by me
       </Typography>
       <Stack
         direction="row"
         alignItems={"center"}
         margin="0 auto"
         justifyContent={"center"}
+        marginTop="0.8rem"
+        marginBottom="1rem"
       >
         <Typography
           color="white"
@@ -182,6 +190,7 @@ const Homepage = () => {
           sx={{
             fontSize: "2rem",
             transition: "transform 0.3s",
+
             ":hover": {
               transform: "scale(1.5)",
             },

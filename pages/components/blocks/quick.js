@@ -20,6 +20,7 @@ import {
   handlePlayPause,
   DisplayBars,
   handleRefresh,
+  playCompletionSound,
 } from "@/utils/utils";
 
 const Quick = () => {
@@ -88,6 +89,7 @@ const Quick = () => {
     if (swaps.length == 0) {
       setIsSorted(true);
       setPaused(true);
+      playCompletionSound();
       return;
     }
     if (paused) {

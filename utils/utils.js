@@ -1,8 +1,16 @@
-import React from "react";
-import { Box } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { Box, keyframes } from "@mui/material";
 
 const COLOR = "turquoise";
 const SWAP_COLOR = "red";
+const SORTED_COLOR = "green";
+const WAVE_COLOR = "yellow";
+
+const waveAnimation = keyframes`
+  0% { background-color: ${SORTED_COLOR}; }
+  50% { background-color: ${WAVE_COLOR}; }
+  100% { background-color: ${SORTED_COLOR}; }
+`;
 
 let audioCtx = null;
 export const playNote = (freq) => {
@@ -54,7 +62,24 @@ export const handleRefresh = (
   setIndices([-1, -1]);
 };
 
+export const playCompletionSound = () => {
+  const notes = [261, 293, 329, 349, 392, 440, 494, 550];
+  notes.forEach((note, index) => {
+    setTimeout(() => {
+      playNote(note);
+    }, index * 200);
+  });
+};
+
 export const DisplayBars = ({ array, indices, isSorted }) => {
+  const [waveEffect, setWaveEffect] = useState(false);
+
+  useEffect(() => {
+    if (isSorted) {
+      setWaveEffect(true);
+    }
+  }, [isSorted]);
+
   return (
     <Box
       sx={{
@@ -72,12 +97,12 @@ export const DisplayBars = ({ array, indices, isSorted }) => {
           sx={{
             width: "20px",
             height: `${value * 100}%`,
-            backgroundColor: isSorted
-              ? "green"
-              : indices.includes(idx)
-              ? SWAP_COLOR
-              : COLOR,
+            backgroundColor: indices.includes(idx) ? SWAP_COLOR : COLOR,
             margin: "0 1px",
+            animation:
+              isSorted && waveEffect
+                ? `${waveAnimation} 1s ease ${idx * 0.05}s infinite`
+                : "none",
             transition: isSorted ? "background-color 0.5s ease" : "none",
           }}
         />

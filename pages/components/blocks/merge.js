@@ -20,6 +20,7 @@ import {
   handlePlayPause,
   DisplayBars,
   handleRefresh,
+  playCompletionSound,
 } from "@/utils/utils";
 
 const Merge = () => {
@@ -102,6 +103,7 @@ const Merge = () => {
     if (swaps.length == 0) {
       setIsSorted(true);
       setPaused(true);
+      playCompletionSound();
       return;
     }
     if (paused) {
