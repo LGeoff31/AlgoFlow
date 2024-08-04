@@ -45,12 +45,16 @@ const Description = () => {
 
   return (
     <Grid container sx={{ color: "white", marginTop: "4rem" }}>
-      <Grid item xs={12} md={6} container direction={"column"}>
+      <Grid
+        item
+        xs={12}
+        md={6}
+        container
+        direction={"column"}
+        sx={{ paddingLeft: "1rem", paddingRight: "1rem" }}
+      >
         <Analysis
-          desc="The algorithm repeatedly selects the smallest (or largest) element
-          from the unsorted portion of the list and swaps it with the first
-          element of the unsorted part. This process is repeated for the remaining unsorted portion until
-          the entire list is sorted."
+          desc="Search for the smallest number, swap it into the first index. Going onwards, look for 2nd smallest number and swap with 2nd index. Repeat this process. "
           name="Selection"
           average="O(n^2)"
           best="O(n^2)"
@@ -58,7 +62,7 @@ const Description = () => {
           space="O(1)"
         />
       </Grid>
-      <Grid xs={12} md={6}>
+      <Grid xs={12} md={6} sx={{ paddingRight: { md: "1rem", xs: "0rem" } }}>
         <Button
           variant="contained"
           sx={{
@@ -149,7 +153,7 @@ const Description = () => {
             language={selectedLanguage}
             style={dark}
             customStyle={{
-              height: "38.5rem",
+              height: "40rem",
               overflowY: "scroll",
               fontSize: isDesktop ? "1rem" : "0.6rem",
             }}

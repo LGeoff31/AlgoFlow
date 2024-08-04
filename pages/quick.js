@@ -4,6 +4,7 @@ import { Typography, Grid } from "@mui/material";
 import Blocks from "./components/blocks/quick";
 import Description from "./components/description/quick";
 import CustomCursor from "./components/CustomCursor";
+import Footer from "./components/Footer";
 
 const Selection = () => {
   return (
@@ -13,6 +14,7 @@ const Selection = () => {
         <Navbar />
         <Blocks />
         <Description />
+        <Footer />
       </Grid>
     </>
   );

@@ -4,6 +4,7 @@ import { Typography, Grid } from "@mui/material";
 import Blocks from "./components/blocks/bubble";
 import Description from "./components/description/bubble";
 import CustomCursor from "./components/CustomCursor";
+import Footer from "./components/Footer";
 
 const Bubble = () => {
   return (
@@ -13,6 +14,7 @@ const Bubble = () => {
         <Navbar />
         <Blocks />
         <Description />
+        <Footer />
       </Grid>
     </>
   );

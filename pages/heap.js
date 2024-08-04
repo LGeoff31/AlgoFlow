@@ -4,6 +4,7 @@ import { Typography, Grid } from "@mui/material";
 import Blocks from "./components/blocks/heap";
 import Description from "./components/description/heap";
 import CustomCursor from "./components/CustomCursor";
+import Footer from "./components/Footer";
 
 const Heap = () => {
   return (
@@ -13,6 +14,7 @@ const Heap = () => {
         <Navbar />
         <Blocks />
         <Description />
+        <Footer />
       </Grid>
     </>
   );

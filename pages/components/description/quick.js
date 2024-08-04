@@ -45,14 +45,16 @@ const Description = () => {
 
   return (
     <Grid container sx={{ color: "white", marginTop: "4rem" }}>
-      <Grid item xs={12} md={6} container direction={"column"}>
+      <Grid
+        item
+        xs={12}
+        md={6}
+        container
+        direction={"column"}
+        sx={{ paddingLeft: "1rem", paddingRight: "1rem" }}
+      >
         <Analysis
-          desc="QuickSort is a sorting algorithm based on the Divide and Conquer
-          algorithm that picks an element as a pivot and partitions the
-          given array around the picked pivot by placing the pivot in its
-          correct position in the sorted array. Partition is done recursively on each side of the pivot after the
-          pivot is placed in its correct position and this finally sorts the
-          array."
+          desc="Choose any element to act as a pivot and place it in the correct location with all numbers less than it on the left and numbers greater on the right. Recursively repeat this process on the left and right subarrays created by the pivot."
           name="Quick"
           average="O(nlogn)"
           best="O(nlogn)"
@@ -60,7 +62,7 @@ const Description = () => {
           space="O(n)"
         />
       </Grid>
-      <Grid xs={12} md={6}>
+      <Grid xs={12} md={6} sx={{ paddingRight: { md: "1rem", xs: "0rem" } }}>
         <Button
           variant="contained"
           sx={{
@@ -151,7 +153,7 @@ const Description = () => {
             language={selectedLanguage}
             style={dark}
             customStyle={{
-              height: "43.5rem",
+              height: "42rem",
               overflowY: "scroll",
               fontSize: isDesktop ? "1rem" : "0.6rem",
             }}

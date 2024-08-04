@@ -45,9 +45,16 @@ const Description = () => {
 
   return (
     <Grid container sx={{ color: "white", marginTop: "4rem" }}>
-      <Grid item xs={12} md={6} container direction={"column"}>
+      <Grid
+        item
+        xs={12}
+        md={6}
+        container
+        direction={"column"}
+        sx={{ paddingLeft: "1rem", paddingRight: "1rem" }}
+      >
         <Analysis
-          desc="Transform the array into a max heap, where the parent node is greater than or equal to its child nodes. Once the max heap is built, repeatedly extract the maximum element from the heap and place it at the end of the array. Then, reheapify the remaining elements to restore the heap property. Continue this process until the entire array is sorted."
+          desc="Convert the array into a max heap. Repeatedly extract the maximum element, place it at the end of the array, and reheapify to maintain the heap variant."
           name="Heap"
           average="O(nlogn)"
           best="O(nlogn)"
@@ -55,7 +62,7 @@ const Description = () => {
           space="O(1)"
         />
       </Grid>
-      <Grid xs={12} md={6}>
+      <Grid xs={12} md={6} sx={{ paddingRight: { md: "1rem", xs: "0rem" } }}>
         <Button
           variant="contained"
           sx={{
@@ -145,7 +152,7 @@ const Description = () => {
             language={selectedLanguage}
             style={dark}
             customStyle={{
-              height: "43.5rem",
+              height: "40rem",
               overflowY: "scroll",
               fontSize: isDesktop ? "1rem" : "0.6rem",
             }}

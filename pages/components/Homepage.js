@@ -130,6 +130,7 @@ const Homepage = () => {
               fontFamily: "Space Grotesk",
               "&:hover": {
                 backgroundColor: "darkturquoise",
+                color: "black",
               },
             }}
           >
@@ -137,7 +138,10 @@ const Homepage = () => {
               fontWeight={"bold"}
               fontSize="1.5rem"
               color="turquoise"
-              sx={{ textTransform: "none" }}
+              sx={{
+                textTransform: "none",
+                "&:hover": { color: "black" },
+              }}
             >
               Demo
             </Typography>
@@ -176,7 +180,7 @@ const Homepage = () => {
         alignItems={"center"}
         margin="0 auto"
         justifyContent={"center"}
-        marginTop="0.8rem"
+        marginTop="0.4rem"
         marginBottom="1rem"
       >
         <Typography

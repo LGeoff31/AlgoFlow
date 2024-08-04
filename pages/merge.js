@@ -4,6 +4,7 @@ import { Typography, Grid } from "@mui/material";
 import Blocks from "./components/blocks/merge";
 import Description from "./components/description/merge";
 import CustomCursor from "./components/CustomCursor";
+import Footer from "./components/Footer";
 
 const Merge = () => {
   return (
@@ -13,6 +14,7 @@ const Merge = () => {
         <Navbar />
         <Blocks />
         <Description />
+        <Footer />
       </Grid>
     </>
   );

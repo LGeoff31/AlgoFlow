@@ -84,7 +84,7 @@ const Navbar = () => {
               gap="1rem"
               textAlign={"center"}
               marginRight="1%"
-              marginTop="5rem"
+              marginTop="2rem"
             >
               {algorithms.map((algorithm, idx) => (
                 <Link

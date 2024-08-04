@@ -44,15 +44,27 @@ const Description = () => {
   };
 
   return (
-    <Grid container sx={{ color: "white", marginTop: "4rem" }}>
-      <Grid item xs={12} md={6} container direction={"column"}>
+    <Grid
+      container
+      sx={{
+        color: "white",
+        marginTop: "4rem",
+      }}
+    >
+      <Grid
+        item
+        xs={12}
+        md={6}
+        container
+        direction={"column"}
+        sx={{ paddingLeft: "1rem", paddingRight: "1rem" }}
+      >
         <Analysis
           desc="Recursively split the array into left and right halves until the
             array has one element. Begin merging these single element arrays
-            into two element arrays, then four element arrays, etc During the
-            merge process, ensure the two arrays merge to a sorted array using
-            pointers All the single element arrays will have merged to form a
-            sorted array of the original array size"
+            into two element arrays, then four element arrays, etc, until you have your sorted array. During the
+            merge process, ensure your forming a sorted array using a two
+            pointers technique."
           name="Merge"
           average="O(nlogn)"
           best="O(nlogn)"
@@ -60,7 +72,7 @@ const Description = () => {
           space="O(n)"
         />
       </Grid>
-      <Grid xs={12} md={6}>
+      <Grid xs={12} md={6} sx={{ paddingRight: { md: "1rem", xs: "0rem" } }}>
         <Button
           variant="contained"
           sx={{
@@ -150,7 +162,7 @@ const Description = () => {
             language={selectedLanguage}
             style={dark}
             customStyle={{
-              height: "43.5rem",
+              height: "44.5rem",
               overflowY: "scroll",
               fontSize: isDesktop ? "1rem" : "0.6rem",
             }}

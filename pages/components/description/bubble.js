@@ -45,13 +45,16 @@ const Description = () => {
 
   return (
     <Grid container sx={{ color: "white", marginTop: "4rem" }}>
-      <Grid item xs={12} md={6} container direction={"column"}>
+      <Grid
+        item
+        xs={12}
+        md={6}
+        container
+        direction={"column"}
+        sx={{ paddingLeft: "1rem", paddingRight: "1rem" }}
+      >
         <Analysis
-          desc="Repeatedly swapping the adjacent elements if they are in the wrong
-          order. Traverse from left and compare adjacent elements and the higher
-          one is placed at right side. In this way, the largest element is moved to the rightmost end at
-          first. This process is then continued to find the second largest and
-          place it and so on until the data is sorted"
+          desc="Repeatedly swap adjacent elements if they are in the wrong order. The first traversal should bubble the largest element to the end. Then the second traversal should bubble the 2nd largest element to the second last index and so onwards."
           name="Bubble"
           average="O(n^2)"
           best="O(n)"
@@ -59,7 +62,7 @@ const Description = () => {
           space="O(1)"
         />
       </Grid>
-      <Grid xs={12} md={6}>
+      <Grid xs={12} md={6} sx={{ paddingRight: { md: "1rem", xs: "0rem" } }}>
         <Button
           variant="contained"
           sx={{
@@ -150,7 +153,7 @@ const Description = () => {
             language={selectedLanguage}
             style={dark}
             customStyle={{
-              height: "40.5rem",
+              height: "42rem",
               overflowY: "scroll",
               fontSize: isDesktop ? "1rem" : "0.6rem",
             }}
