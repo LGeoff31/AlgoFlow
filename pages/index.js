@@ -14,7 +14,7 @@ export default function Home() {
         background: "rgb(36,36,36)",
       }}
     >
-      <CustomCursor />
+      {/* <CustomCursor /> */}
       <Navbar />
       <Homepage />
       <AddReview />

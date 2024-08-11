@@ -10,7 +10,7 @@ const Bubble = () => {
   return (
     <>
       <Grid sx={{ background: "rgb(36,36,36)" }}>
-        <CustomCursor />
+        {/* <CustomCursor /> */}
         <Navbar />
         <Blocks />
         <Description />
