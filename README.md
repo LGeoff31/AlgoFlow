@@ -11,8 +11,8 @@
 
 ## Algorithms
 
-* Currently support for Merge sort, Quick Sort, Selection Sort, and Bubble sort
-* Looking to contribute so more algorithms, love to hear ideas of which I should include next
+* Currently support for Merge sort, Quick Sort, Selection Sort, and Bubble sort (code snippets written by me)
+* Looking to contribute to more algorithms, love to hear ideas of which I should include next
 
 ## Running locally
 
