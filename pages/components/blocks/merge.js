@@ -52,49 +52,27 @@ const Merge = () => {
   }, [bars]);
   // Simple play/pause toggling
   useEffect(() => {
-    const sortedArray = [...array];
     if (!paused) {
-      const swaps = [];
-      mergeSort(sortedArray, 0, sortedArray.length - 1, swaps);
+      const swaps = bubbleSort();
       animate(swaps, array, setArray);
     } else {
       clearTimeout(timeoutId);
     }
   }, [paused]);
 
-  const merge = (arr, low, mid, high, swaps) => {
-    const left = arr.slice(low, mid + 1);
-    const right = arr.slice(mid + 1, high + 1);
-    let i = 0;
-    let j = 0;
-    let k = low;
-
-    while (i < left.length && j < right.length) {
-      if (left[i] <= right[j]) {
-        swaps.push([k, arr[k], left[i]]);
-        arr[k++] = left[i++];
-      } else {
-        swaps.push([k, arr[k], right[j]]);
-        arr[k++] = right[j++];
+  const bubbleSort = () => {
+    const swaps = [];
+    const sortedArray = [...array];
+    for (let i = 0; i < sortedArray.length; i++) {
+      for (let j = 0; j < sortedArray.length - i - 1; j++) {
+        if (sortedArray[j] > sortedArray[j + 1]) {
+          swaps.push([j, j + 1]);
+          [sortedArray[j], sortedArray[j + 1]] = [
+            sortedArray[j + 1],
+            sortedArray[j],
+          ];
+        }
       }
-    }
-
-    while (i < left.length) {
-      swaps.push([k, arr[k], left[i]]);
-      arr[k++] = left[i++];
-    }
-
-    while (j < right.length) {
-      swaps.push([k, arr[k], right[j]]);
-      arr[k++] = right[j++];
-    }
-  };
-  const mergeSort = (arr, low, high, swaps) => {
-    if (low < high) {
-      const mid = Math.floor((low + high) / 2);
-      mergeSort(arr, low, mid, swaps);
-      mergeSort(arr, mid + 1, high, swaps);
-      merge(arr, low, mid, high, swaps);
     }
     return swaps;
   };
@@ -109,13 +87,14 @@ const Merge = () => {
     if (paused) {
       return;
     }
-    const [index, oldValue, newValue] = swaps.shift();
+    const [i, j] = swaps.shift();
     const newArray = [...array];
-    newArray[index] = newValue;
+    [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
     setArray(newArray);
-    setIndices([index]);
+    setIndices([i, j]);
     if (soundRef.current) {
-      playNote(200 + newValue * 500);
+      playNote(200 + array[i] * 500);
+      playNote(200 + array[j] * 500);
     }
 
     const id = setTimeout(
